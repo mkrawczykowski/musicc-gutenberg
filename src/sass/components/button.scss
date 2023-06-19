@@ -1,0 +1,93 @@
+.button {
+  display: flex;
+
+  &.button--mobile-left {
+    @include media-down(xxl) {
+      justify-content: flex-start;
+    }
+  }
+
+  &.button--desktop-left {
+    @include media-up(xxl) {
+      justify-content: flex-start;
+    }
+  }
+
+  &.button--mobile-center {
+    @include media-down(xxl) {
+      justify-content: center;
+    }
+  }
+
+  &.button--desktop-center {
+    @include media-up(xxl) {
+      justify-content: center;
+    }
+  }
+
+  &.button--mobile-right {
+    @include media-down(xxl) {
+      justify-content: flex-end;
+    }
+  }
+
+  &.button--desktop-right {
+    @include media-up(xxl) {
+      justify-content: flex-end;
+    }
+  }
+
+  &.button--blue {
+    &>a {
+      background-color: $main400;
+      color: $white;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: $secondary500;
+        color: $white;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+
+  &.button--normal {
+    &>a {
+      padding: 1.4rem 2.8rem 1.4rem 2.8rem;
+    }
+  }
+
+  &.button--big {
+    &>a {
+      padding: 1.8rem 3.3rem 1.8rem 3.2rem;
+    }
+  }
+
+  &.button--menu {
+    margin-top: 1.2rem;
+    display: inline-block;
+    padding: 0;
+
+    @include media-up(xxl) {
+      margin-top: 0;
+      margin-left: 2.7rem;
+    }
+
+    &>a {
+      padding: 1.4rem 2.8rem 1.4rem 2.8rem;
+      font-size: 1.6rem;
+      line-height: 2.1rem;
+      letter-spacing: 0.3px;
+    }
+  }
+
+  &>a {
+    border-radius: 0.6rem;
+    font-family: 'Rubik', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 2.1rem;
+    display: inline-block;
+  }
+}

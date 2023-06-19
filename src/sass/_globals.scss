@@ -1,0 +1,87 @@
+@use './variables' as variables;
+
+// * {
+//   outline: 1px solid #19ff04;
+//   background-color: #b1ddad;
+// }
+
+html {
+  font-size: 10px;
+  font-size: 62.5%;
+  scrollbar-color: variables.$main300 variables.$secondary50;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: variables.$secondary50;
+}
+
+::-webkit-scrollbar-thumb {
+  background: variables.$main300;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+  padding: 0 2rem;
+  margin: 0 auto;
+
+  @include variables.media-up(xxl) {
+    max-width: 125rem;
+  }
+
+  &.container--wider {
+    @include variables.media-up(xxl) {
+      max-width: 140rem;
+    }
+  }
+
+  .row {
+    display: flex;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    .col {
+      padding-right: 2rem;
+      padding-left: 2rem;
+      width: 100%;
+
+      &.col--60 {
+        width: 100%;
+
+        @include media-up(xxl) {
+          width: 60%;
+        }
+      }
+
+      &.col--40 {
+        width: 100%;
+
+        @include media-up(xxl) {
+          width: 40%;
+        }
+      }
+
+      &.col--50 {
+        width: 100%;
+
+        @include media-up(xxl) {
+          width: 50%;
+        }
+      }
+    }
+  }
+}

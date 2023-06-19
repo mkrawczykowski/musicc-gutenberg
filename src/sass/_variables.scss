@@ -1,0 +1,46 @@
+$white: #ffffff;
+$black: #000000;
+$secondary500: #011937;
+$secondary400: #34475F;
+$secondary300: #677587;
+$secondary100: #CCD1D7;
+$secondary50: #F2FBFE;
+
+$main400: #00ADF0;
+$main300: #66CEF6;
+$main50: #F2FBFE;
+
+$breakpoints: (
+  "xs": 0,
+  "sm": 576,
+  "md": 744,
+  "lg": 992,
+  "xl": 1200,
+  "xxl": 1400,
+  "xxxl": 1800
+);
+
+@mixin media-down($breakpoint) {
+  $pixelsBreakpoint: map-get($breakpoints, $breakpoint) - 1px;
+
+  @media screen and (max-width: $pixelsBreakpoint) {
+    @content;
+  }
+}
+
+@mixin media-up($breakpoint) {
+  $pixelsBreakpoint: map-get($breakpoints, $breakpoint)+0px;
+
+  @media screen and (min-width: $pixelsBreakpoint) {
+    @content;
+  }
+}
+
+@mixin media-between($breakpointMin, $breakpointMax) {
+  $pixelsBreakpointMin: map-get($breakpoints, $breakpointMin)+0px;
+  $pixelsBreakpointMax: map-get($breakpoints, $breakpointMax) - 1px;
+
+  @media screen and (min-width: $pixelsBreakpointMin) and (max-width: $pixelsBreakpointMax) {
+    @content;
+  }
+}
