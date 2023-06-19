@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') or die; ?>
+
 <?php
 function register_my_menus() {
   register_nav_menus(

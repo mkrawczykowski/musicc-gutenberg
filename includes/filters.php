@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') or die; ?>
+
 <?php
 
   add_action('admin_head', 'styling_acf_sections');

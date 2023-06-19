@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') or die; ?>
+
 <?php
 
 //Remove Gutenberg Block Library CSS from loading on the frontend

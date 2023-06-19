@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') or die; ?>
+
 <?php
 
 acf_register_block(array(

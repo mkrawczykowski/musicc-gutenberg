@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') or die; ?>
+
 <?php
   global $post;
 ?>
@@ -31,7 +33,7 @@
 </head>
 
 <body>
-  <header class="header">
+  <!-- <header class="header">
     <div class="container container--wider">
       <div class="row">
         <div class="col">
@@ -60,4 +62,15 @@
       
       
     </div>
-  </header>
+  </header> -->
+
+<header class="header">
+  <div class="container container--wider">
+    <div class="row">
+      <?php get_template_part( 'template-parts/header', 'search' ); ?>
+      <?php get_template_part( 'template-parts/header', 'logo' ); ?>
+      <?php get_template_part( 'template-parts/header', 'hamburger' ); ?>
+      <?php get_template_part( 'template-parts/header', 'main-menu' ); ?>
+    </div>
+  </div>
+</header>

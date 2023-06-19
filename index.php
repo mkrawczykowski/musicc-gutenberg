@@ -1,12 +1,14 @@
+<?php defined('ABSPATH') or die; ?>
+
 <?php
   get_header();
 ?>
 
 	<main class="">
 
-		<?php
+		<!-- <?php
 			the_content();
-		?>
+		?> -->
 		
 	</main>
 
