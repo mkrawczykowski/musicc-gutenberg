@@ -11,6 +11,5 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!hamburger.classList.contains('active')) {
       document.body.style.removeProperty('overflow');
     }
-
   });
 });

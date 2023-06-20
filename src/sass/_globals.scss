@@ -8,23 +8,24 @@
 html {
   font-size: 10px;
   font-size: 62.5%;
-  scrollbar-color: variables.$main300 variables.$secondary50;
+  // scrollbar-color: variables.$black variables.$white;
   scrollbar-width: thin;
 }
 
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
-  background-color: variables.$secondary50;
+  background-color: variables.$white;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: variables.$main300;
+  // background: variables.$black;
 }
 
 body {
   position: relative;
   overflow-x: hidden;
+  background-color: variables.$black;
 }
 
 img {
