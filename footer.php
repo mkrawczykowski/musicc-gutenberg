@@ -1,14 +1,19 @@
-    <footer class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-          </div>
-        </div>
+<?php defined('ABSPATH') or die; ?>    
+    
+<footer class="footer">
+  <div class="container">
+    <hr>
+    <div class="row">
+      <div class="col col--padding">
+        <?php
+          the_field('footer_text', 'options');
+        ?>
       </div>
-      
-    </footer>
+    </div>
+  </div>   
+</footer>
 
-    <?php wp_footer(); ?>
+  <?php wp_footer(); ?>
 
-  </body>
+</body>
 </html>

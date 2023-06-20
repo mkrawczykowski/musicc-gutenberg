@@ -8,24 +8,26 @@
 html {
   font-size: 10px;
   font-size: 62.5%;
-  // scrollbar-color: variables.$black variables.$white;
+  scrollbar-color: variables.$purple1 variables.$pink1;
   scrollbar-width: thin;
 }
 
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
-  background-color: variables.$white;
+  background-color: variables.$purple1;
 }
 
 ::-webkit-scrollbar-thumb {
-  // background: variables.$black;
+  background: variables.$pink1;
 }
 
 body {
   position: relative;
   overflow-x: hidden;
-  background-color: variables.$black;
+  background: radial-gradient(107.29% 212.17% at -7.29% -5.62%, rgba(9, 19, 6, 0.37) 0%, rgba(242, 145, 0, 0.350729) 0.01%, rgba(159, 32, 131, 0.2849) 0.02%, rgba(138, 28, 113, 0.246054) 24.92%, rgba(0, 0, 0, 0) 100%)
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
+    , #16111C;
 }
 
 img {
@@ -35,7 +37,7 @@ img {
 
 .container {
   width: 100%;
-  padding: 0 2rem;
+  padding: 0 3rem;
   margin: 0 auto;
 
   @include variables.media-up(xxl) {
@@ -50,14 +52,14 @@ img {
 
   .row {
     display: flex;
-    margin-left: -2rem;
-    margin-right: -2rem;
+    margin-left: -3rem;
+    margin-right: -3rem;
     justify-content: flex-start;
     flex-wrap: wrap;
 
     .col {
-      padding-right: 2rem;
-      padding-left: 2rem;
+      padding-right: 3rem;
+      padding-left: 3rem;
       width: 100%;
 
       &.col--60 {
