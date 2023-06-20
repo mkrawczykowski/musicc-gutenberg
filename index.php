@@ -160,7 +160,18 @@
 		<br>
 		<br>
 		<br>
-		<br>
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="heading-text">
+							<h1 class="heading-text__heading">Free CC music</h1>
+							<p class="heading-text__text">produced by professional web developer<br>
+							+ non-professional music producer</p>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
 		
 	</main>
 

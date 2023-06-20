@@ -172,6 +172,28 @@ img {
   }
 }
 
+.heading-text__heading {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 4rem;
+  line-height: 6rem;
+  background: linear-gradient(90.75deg, #FF00A8 2.97%, #BD00FF 55.95%);
+  opacity: 0.6;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.2rem;
+}
+.heading-text__text {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2.5rem;
+  color: #F8EDFF;
+}
+
 .footer p {
   font-family: "Poppins", sans-serif;
   font-style: normal;
