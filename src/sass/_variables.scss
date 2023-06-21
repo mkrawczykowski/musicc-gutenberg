@@ -1,9 +1,16 @@
 $white: #ffffff;
+$whiteAlpha1: rgba(255, 255, 255, 0.07);
 $black: #000000;
+$blackAlpha1: rgba(0, 0, 0, 0.01);
+$blackAlpha2: rgba(0, 0, 0, 0.05);
+$blackAlpha3: rgba(0, 0, 0, 0.09);
+$gray1: #C5BABA;
 
 $pinkwhite: #F8EDFF;
 $pink1: #FF00A8;
+$pink2: rgba(255, 0, 168, 0.5);
 $purple1: #BD00FF;
+$purple2: rgba(189, 0, 255, 0.5);
 
 $breakpoints: (
   "xs": 0,

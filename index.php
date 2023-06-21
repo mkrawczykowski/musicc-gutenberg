@@ -168,30 +168,30 @@
 							<p class="track-description">Tutaj będzie krótki opis kawałka, który nie zawsze będzie występował. Dam tutaj ograniczony boksik, czyli mały boks.</p>
 							<div class="track-box">
 								<div class="track-box__player">
-									<button class="track-box__button"></button>
+									<button class="track-box__button track-box__button--pause"></button>
 									<div class="track-box__track">
 										<span class="track-box__pointer"></span>
 									</div>
-									<span>05:50</span>
+									<span class="track-box__time">05:50</span>
 								</div>
 								<ul class="track-box__icons">
 									<li class="track-box__icon track-box__icon--download"></li>
 									<li class="track-box__icon track-box__icon--share"></li>
 								</ul>
 							</div>
-							<ul>
-								<li>happy</li>
-								<li>mysterious</li>
-								<li>happy</li>
-								<li>warm</li>
-								<li>happy</li>
-								<li>mysterious</li>
-								<li>happy</li>
-								<li>piano</li>
-								<li>warm</li>
-								<li>mysterious</li>
-								<li>piano</li>
-								<li>happy</li>
+							<ul class="track__terms">
+								<li class="track__term"><a href="">happy</a></li>
+								<li class="track__term"><a href="">mysterious</a></li>
+								<li class="track__term"><a href="">happy</a></li>
+								<li class="track__term"><a href="">warm</a></li>
+								<li class="track__term"><a href="">happy</a></li>
+								<li class="track__term"><a href="">mysterious</a></li>
+								<li class="track__term"><a href="">happy</a></li>
+								<li class="track__term"><a href="">piano</a></li>
+								<li class="track__term"><a href="">warm</a></li>
+								<li class="track__term"><a href="">mysterious</a></li>
+								<li class="track__term"><a href="">piano</a></li>
+								<li class="track__term"><a href="">happy</a></li>
 							</ul>
 						</div>
 					</div>
