@@ -206,6 +206,11 @@ img {
   }
 }
 
+.track {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 .track-name {
   font-family: "Inter", sans-serif;
   font-style: normal;
@@ -213,6 +218,11 @@ img {
   font-size: 1.8rem;
   line-height: 2.2rem;
   color: #ffffff;
+}
+@media screen and (min-width: 1200px) {
+  .track-name {
+    display: none;
+  }
 }
 .track-description {
   font-family: "Poppins", sans-serif;
@@ -223,10 +233,22 @@ img {
   color: #ffffff;
   margin-top: 2.7rem;
 }
+@media screen and (min-width: 1400px) {
+  .track-description {
+    order: 2;
+    width: 50%;
+  }
+}
 .track-box {
   display: flex;
   margin-top: 3.3rem;
   margin-bottom: 3rem;
+}
+@media screen and (min-width: 1400px) {
+  .track-box {
+    order: 1;
+    width: 100%;
+  }
 }
 .track-box__player {
   background: rgba(255, 255, 255, 0.07);
@@ -247,6 +269,32 @@ img {
     justify-content: space-between;
   }
 }
+@media screen and (min-width: 1200px) {
+  .track-box__player {
+    height: 8.8rem;
+    padding: 0 5.1rem 0 5rem;
+  }
+}
+.track-box__player-name {
+  display: none;
+}
+@media screen and (min-width: 1200px) {
+  .track-box__player-name {
+    position: relative;
+    top: -0.2rem;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.9rem;
+    background: linear-gradient(90.75deg, rgba(255, 0, 168, 0.6) 2.97%, rgba(189, 0, 255, 0.6) 55.95%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    max-width: 19rem;
+    margin-right: 1.7rem;
+  }
+}
 .track-box__player .track-box__button {
   display: inline-block;
   width: 1.7rem;
@@ -258,6 +306,11 @@ img {
   margin-right: 2.2rem;
   position: relative;
   top: -2px;
+}
+@media screen and (min-width: 1200px) {
+  .track-box__player .track-box__button {
+    margin-right: 3.4rem;
+  }
 }
 .track-box__player .track-box__button--pause {
   background-image: url("data:image/svg+xml,<svg viewBox=\"0 0 20 22\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"13\" width=\"7\" height=\"22\" rx=\"3.5\" fill=\"url%28%23paint0_linear_444_391%29\" fill-opacity=\"0.6\"/><rect width=\"7\" height=\"22\" rx=\"3.5\" fill=\"url%28%23paint1_linear_444_391%29\" fill-opacity=\"0.6\"/><defs><linearGradient id=\"paint0_linear_444_391\" x1=\"13.1644\" y1=\"11\" x2=\"16.9217\" y2=\"11.0157\" gradientUnits=\"userSpaceOnUse\"><stop stop-color=\"%23FF00A8\"/><stop offset=\"1\" stop-color=\"%23BD00FF\"/></linearGradient><linearGradient id=\"paint1_linear_444_391\" x1=\"0.164365\" y1=\"11\" x2=\"3.92171\" y2=\"11.0157\" gradientUnits=\"userSpaceOnUse\"><stop stop-color=\"%23FF00A8\"/><stop offset=\"1\" stop-color=\"%23BD00FF\"/></linearGradient></defs></svg>");
@@ -275,6 +328,13 @@ img {
     flex-grow: 1;
   }
 }
+@media screen and (min-width: 1200px) {
+  .track-box__player .track-box__track {
+    height: 0.4rem;
+    border-radius: 0.2rem;
+    margin-right: 1.8rem;
+  }
+}
 .track-box__player .track-box__track .track-box__pointer {
   background: linear-gradient(90.75deg, rgba(255, 0, 168, 0.5) 2.97%, rgba(189, 0, 255, 0.5) 55.95%);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -288,6 +348,16 @@ img {
   top: -5px;
   left: 18px;
 }
+@media screen and (min-width: 1400px) {
+  .track-box__player .track-box__track .track-box__pointer {
+    background: #C5BABA;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 1.9rem;
+    height: 1.8rem;
+    top: -0.7rem;
+    left: 6.7rem;
+  }
+}
 .track-box__player .track-box__time {
   font-family: "Inter", sans-serif;
   font-style: normal;
@@ -297,6 +367,13 @@ img {
   color: #C5BABA;
   position: relative;
   top: -0.1rem;
+}
+@media screen and (min-width: 1400px) {
+  .track-box__player .track-box__time {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    top: 0.1rem;
+  }
 }
 .track-box__icons {
   display: flex;
@@ -330,13 +407,19 @@ img {
   top: -0.2rem;
   margin-left: 0.9rem;
 }
-.track__terms {
+.track-terms {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 3rem;
   gap: 1.3rem 2.2rem;
 }
-.track__terms .track__term {
+@media screen and (min-width: 1400px) {
+  .track-terms {
+    order: 3;
+    width: 50%;
+  }
+}
+.track-terms .track__term {
   font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 400;
