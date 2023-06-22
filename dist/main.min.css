@@ -1,0 +1,471 @@
+/*!********************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/index.scss ***!
+  \********************************************************************************************************************************************************/
+/***
+    The new CSS reset - version 1.7.3 (last updated 7.8.2022)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+ */
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a,
+button {
+  cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol,
+ul,
+menu {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+  max-width: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input,
+textarea {
+  -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+  -webkit-appearance: revert;
+  -moz-appearance: revert;
+       appearance: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::-moz-placeholder {
+  color: unset;
+}
+::placeholder {
+  color: unset;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+  display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+:where([contenteditable]:not([contenteditable=false])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+  -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable=true]) {
+  -webkit-user-drag: element;
+}
+
+html {
+  font-size: 10px;
+  font-size: 62.5%;
+  scrollbar-color: #BD00FF #FF00A8;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #BD00FF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF00A8;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+  background: radial-gradient(107.29% 212.17% at -7.29% -5.62%, rgba(9, 19, 6, 0.37) 0%, rgba(242, 145, 0, 0.350729) 0.01%, rgba(159, 32, 131, 0.2849) 0.02%, rgba(138, 28, 113, 0.246054) 24.92%, rgba(0, 0, 0, 0) 100%), #16111C;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+  padding: 0 3rem;
+  margin: 0 auto;
+}
+@media screen and (min-width: 1400px) {
+  .container {
+    max-width: 125rem;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .container.container--wider {
+    max-width: 140rem;
+  }
+}
+.container .row {
+  display: flex;
+  margin-left: -3rem;
+  margin-right: -3rem;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.container .row .col {
+  padding-right: 3rem;
+  padding-left: 3rem;
+  width: 100%;
+}
+.container .row .col.col--60 {
+  width: 100%;
+}
+@media screen and (min-width: 1400px) {
+  .container .row .col.col--60 {
+    width: 60%;
+  }
+}
+.container .row .col.col--40 {
+  width: 100%;
+}
+@media screen and (min-width: 1400px) {
+  .container .row .col.col--40 {
+    width: 40%;
+  }
+}
+.container .row .col.col--50 {
+  width: 100%;
+}
+@media screen and (min-width: 1400px) {
+  .container .row .col.col--50 {
+    width: 50%;
+  }
+}
+
+.heading-text__heading {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 4rem;
+  line-height: 6rem;
+  background: linear-gradient(90.75deg, #FF00A8 2.97%, #BD00FF 55.95%);
+  opacity: 0.6;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.2rem;
+}
+@media screen and (min-width: 1400px) {
+  .heading-text__heading {
+    font-size: 4.8rem;
+    line-height: 7.2rem;
+  }
+}
+.heading-text__text {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2.5rem;
+  color: #F8EDFF;
+}
+@media screen and (min-width: 1400px) {
+  .heading-text__text {
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+  }
+}
+
+.track {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.track-name {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  color: #ffffff;
+}
+@media screen and (min-width: 1200px) {
+  .track-name {
+    display: none;
+  }
+}
+.track-description {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  color: #ffffff;
+  margin-top: 2.7rem;
+}
+@media screen and (min-width: 1400px) {
+  .track-description {
+    order: 2;
+    width: 50%;
+  }
+}
+.track-box {
+  display: flex;
+  margin-top: 3.3rem;
+  margin-bottom: 3rem;
+}
+@media screen and (min-width: 1400px) {
+  .track-box {
+    order: 1;
+    width: 100%;
+  }
+}
+.track-box__player {
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0px -226px 90px rgba(0, 0, 0, 0.01), 0px -127px 76px rgba(0, 0, 0, 0.05), 0px -56px 56px rgba(0, 0, 0, 0.09), 0px -14px 31px rgba(0, 0, 0, 0.01), 0px 0px 0px rgba(0, 0, 0, 0.01);
+  border-radius: 4.4rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 22.8rem;
+  height: 5.4rem;
+  padding: 0 2.4rem 0 2.4rem;
+  position: relative;
+}
+@media screen and (min-width: 576px) {
+  .track-box__player {
+    width: auto;
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .track-box__player {
+    height: 8.8rem;
+    padding: 0 5.1rem 0 5rem;
+  }
+}
+.track-box__player-name {
+  display: none;
+}
+@media screen and (min-width: 1200px) {
+  .track-box__player-name {
+    position: relative;
+    top: -0.2rem;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.9rem;
+    background: linear-gradient(90.75deg, rgba(255, 0, 168, 0.6) 2.97%, rgba(189, 0, 255, 0.6) 55.95%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    max-width: 19rem;
+    margin-right: 1.7rem;
+  }
+}
+.track-box__player .track-box__button {
+  display: inline-block;
+  width: 1.7rem;
+  height: 1.8rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("data:image/svg+xml,<svg width=\"21\" height=\"22\" viewBox=\"0 0 21 22\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M19.0757 8.7813C21.136 9.96803 21.0948 12.9509 19.003 14.0416L4.47466 21.6173C2.46076 22.6674 0.0381114 21.1645 0.0696208 18.8845L0.178925 10.9754L0.288229 3.06624C0.319738 0.78625 2.78237 -0.603775 4.76596 0.538789L19.0757 8.7813Z\" fill=\"url%28%23paint0_linear_444_297%29\" fill-opacity=\"0.6\"/><defs><linearGradient id=\"paint0_linear_444_297\" x1=\"12.1775\" y1=\"-1.11726\" x2=\"11.6552\" y2=\"12.8001\" gradientUnits=\"userSpaceOnUse\"><stop stop-color=\"%23FF00A8\"/><stop offset=\"1\" stop-color=\"%23BD00FF\"/></linearGradient></defs></svg>");
+  cursor: pointer;
+  margin-right: 2.2rem;
+  position: relative;
+  top: -2px;
+}
+@media screen and (min-width: 1200px) {
+  .track-box__player .track-box__button {
+    margin-right: 3.4rem;
+  }
+}
+.track-box__player .track-box__button--pause {
+  background-image: url("data:image/svg+xml,<svg viewBox=\"0 0 20 22\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"13\" width=\"7\" height=\"22\" rx=\"3.5\" fill=\"url%28%23paint0_linear_444_391%29\" fill-opacity=\"0.6\"/><rect width=\"7\" height=\"22\" rx=\"3.5\" fill=\"url%28%23paint1_linear_444_391%29\" fill-opacity=\"0.6\"/><defs><linearGradient id=\"paint0_linear_444_391\" x1=\"13.1644\" y1=\"11\" x2=\"16.9217\" y2=\"11.0157\" gradientUnits=\"userSpaceOnUse\"><stop stop-color=\"%23FF00A8\"/><stop offset=\"1\" stop-color=\"%23BD00FF\"/></linearGradient><linearGradient id=\"paint1_linear_444_391\" x1=\"0.164365\" y1=\"11\" x2=\"3.92171\" y2=\"11.0157\" gradientUnits=\"userSpaceOnUse\"><stop stop-color=\"%23FF00A8\"/><stop offset=\"1\" stop-color=\"%23BD00FF\"/></linearGradient></defs></svg>");
+}
+.track-box__player .track-box__track {
+  background-color: #C5BABA;
+  width: 9.11rem;
+  height: 0.1rem;
+  position: relative;
+  margin-right: 1.1rem;
+}
+@media screen and (min-width: 576px) {
+  .track-box__player .track-box__track {
+    width: auto;
+    flex-grow: 1;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .track-box__player .track-box__track {
+    height: 0.4rem;
+    border-radius: 0.2rem;
+    margin-right: 1.8rem;
+  }
+}
+.track-box__player .track-box__track .track-box__pointer {
+  background: linear-gradient(90.75deg, rgba(255, 0, 168, 0.5) 2.97%, rgba(189, 0, 255, 0.5) 55.95%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  top: -5px;
+  left: 18px;
+}
+@media screen and (min-width: 1400px) {
+  .track-box__player .track-box__track .track-box__pointer {
+    background: #C5BABA;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 1.9rem;
+    height: 1.8rem;
+    top: -0.7rem;
+    left: 6.7rem;
+  }
+}
+.track-box__player .track-box__time {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  color: #C5BABA;
+  position: relative;
+  top: -0.1rem;
+}
+@media screen and (min-width: 1400px) {
+  .track-box__player .track-box__time {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    top: 0.1rem;
+  }
+}
+.track-box__icons {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+.track-box__icons .track-box__icon {
+  position: relative;
+}
+.track-box__icons .track-box__icon--download {
+  background-image: url("data:image/svg+xml,<svg width=\"32\" height=\"31\" viewBox=\"0 0 32 31\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M2 29H30M16 18.875V2M16 18.875L23 12.125M16 18.875L9 12.125\" stroke=\"url%28%23paint0_linear_444_380%29\" stroke-opacity=\"0.6\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><defs><linearGradient id=\"paint0_linear_444_380\" x1=\"2.65746\" y1=\"15.5\" x2=\"17.6843\" y2=\"15.7046\" gradientUnits=\"userSpaceOnUse\"><stop stop-color=\"%23FF00A8\"/><stop offset=\"1\" stop-color=\"%23BD00FF\"/></linearGradient></defs></svg>");
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: inline-block;
+  width: 3.2rem;
+  height: 3.1rem;
+  transform: scale(0.75);
+  top: -0.2rem;
+  margin-left: 0.5rem;
+}
+.track-box__icons .track-box__icon--share {
+  background-image: url("data:image/svg+xml,<svg width=\"26\" height=\"29\" viewBox=\"0 0 26 29\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M21.6667 20.498C20.5689 20.498 19.5867 20.9347 18.8356 21.619L8.53667 15.5773C8.60889 15.2425 8.66667 14.9076 8.66667 14.5582C8.66667 14.2088 8.60889 13.874 8.53667 13.5392L18.72 7.55572C19.5 8.28364 20.5256 8.73494 21.6667 8.73494C24.0644 8.73494 26 6.78414 26 4.36747C26 1.9508 24.0644 0 21.6667 0C19.2689 0 17.3333 1.9508 17.3333 4.36747C17.3333 4.71687 17.3911 5.05171 17.4633 5.38655L7.28 11.37C6.5 10.6421 5.47444 10.1908 4.33333 10.1908C1.93556 10.1908 0 12.1416 0 14.5582C0 16.9749 1.93556 18.9257 4.33333 18.9257C5.47444 18.9257 6.5 18.4744 7.28 17.7465L17.5644 23.8027C17.4922 24.1084 17.4489 24.4287 17.4489 24.749C17.4489 27.0929 19.3411 29 21.6667 29C23.9922 29 25.8844 27.0929 25.8844 24.749C25.8844 22.4051 23.9922 20.498 21.6667 20.498Z\" fill=\"url%28%23paint0_linear_444_383%29\" fill-opacity=\"0.6\"/><defs><linearGradient id=\"paint0_linear_444_383\" x1=\"0.610497\" y1=\"14.5\" x2=\"14.5647\" y2=\"14.6643\" gradientUnits=\"userSpaceOnUse\"><stop stop-color=\"%23FF00A8\"/><stop offset=\"1\" stop-color=\"%23BD00FF\"/></linearGradient></defs></svg>");
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: inline-block;
+  width: 2.6rem;
+  height: 2.9rem;
+  transform: scale(0.73);
+  top: -0.2rem;
+  margin-left: 0.9rem;
+}
+.track-terms {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+  gap: 1.3rem 2.2rem;
+}
+@media screen and (min-width: 1400px) {
+  .track-terms {
+    order: 3;
+    width: 50%;
+  }
+}
+.track-terms .track__term {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  color: #ffffff;
+}
+
+.footer p {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  color: #ffffff;
+}
+@media screen and (min-width: 992px) {
+  .footer p {
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .footer p {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+}
+.footer hr {
+  display: inline-block;
+  width: 100%;
+  height: 0.1rem;
+  background: rgb(255, 0, 168);
+  background: linear-gradient(139deg, rgb(255, 0, 168) 0%, rgb(189, 0, 255) 100%);
+}
+@media screen and (min-width: 1400px) {
+  .footer hr {
+    width: 48%;
+  }
+}
+.footer .col--padding {
+  padding-top: 2.6rem;
+  padding-bottom: 6.2rem;
+}
+@media screen and (min-width: 1400px) {
+  .footer .col--padding {
+    padding-top: 4rem;
+  }
+}

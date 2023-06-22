@@ -5,49 +5,56 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = (env, argv) => {
   return {
-    entry: glob.sync('./src/**/index.js', { dot: true }).reduce((acc, path) => {
-      // console.log(`path: ${path}`);
+    entry: {
+      'main': './src/index.js',
+      'blocks/blocks': { import: './src/blocks-index.js', filename: './[name].js' },
+    },
+
+    // entry: glob.sync('./src/**/index.js', { dot: true }).reduce((acc, path) => {
+    //   // console.log(`path: ${path}`);
 
 
-      const entry = path;
-      // const entry = path.replace('index.js', '')
-      // path = './' + path;
-      // console.log(`path: ${path}`);
-      let withoutPath;
+    //   const entry = path;
+    //   // const entry = path.replace('index.js', '')
+    //   // path = './' + path;
+    //   // console.log(`path: ${path}`);
+    //   let withoutPath;
 
-      // // const entry = path.replace(/^.*[\\\/]/, '').replace('.js', '');
-      // console.log(`entry: ${entry}`);
-      // console.log(entry.includes('src\\js\\blocks\\'));
+    //   // // const entry = path.replace(/^.*[\\\/]/, '').replace('.js', '');
+    //   // console.log(`entry: ${entry}`);
+    //   // console.log(entry.includes('src\\js\\blocks\\'));
 
-      if (entry.includes('src\\js\\blocks\\')) {
-        path = entry.replace('src\\js\\blocks\\', '')
-        console.log(`entry: ${entry}`)
-      }
-      if (entry.includes('src\\')) {
-        console.log(`entry: ${entry}`)
-        path = entry.replace('src\\', '')
-        console.log(`path 2: ${path}`)
-      }
+    //   if (entry.includes('src\\js\\blocks\\')) {
+    //     path = entry.replace('src\\js\\blocks\\', '')
+    //     console.log(`entry: ${entry}`)
+    //   }
+    //   if (entry.includes('src\\')) {
+    //     console.log(`entry: ${entry}`)
+    //     path = entry.replace('src\\', '')
+    //     console.log(`path 2: ${path}`)
+    //   }
 
-      path = './' + path;
+    //   path = './' + path;
 
-      // const withoutBackslash = withoutPath.replace(/\\/g, '')
-      // console.log(withoutBackslash)
+    //   // const withoutBackslash = withoutPath.replace(/\\/g, '')
+    //   // console.log(withoutBackslash)
 
-      acc[entry] = path
-      console.log(acc)
-      console.log('-------------');
-      return acc
-    }, {}),
+    //   acc[entry] = path
+    //   console.log(acc)
+    //   console.log('-------------');
+    //   return acc
+    // }, {}),
+
+
     output: {
-      filename: '[name]',
+      filename: '[name].min.js',
       path: path.resolve(__dirname, 'dist'),
     },
     watchOptions: {
       ignored: /node_modules/,
     },
     plugins: [new MiniCssExtractPlugin({
-      filename: "style.min.css"
+      filename: "[name].min.css"
     })],
     module: {
       rules: [
