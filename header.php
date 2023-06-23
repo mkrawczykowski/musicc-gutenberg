@@ -11,8 +11,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . '/dist/style.min.css'; ?>">
-  <script src="<?php echo get_stylesheet_directory_uri() . '/dist/scripts.min.js'; ?>"></script>
+  <!-- <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . '/dist/style.min.css'; ?>">
+  <script src="<?php echo get_stylesheet_directory_uri() . '/dist/scripts.min.js'; ?>"></script> -->
 
   <!-- Async Google Fonts from https://pagespeedchecklist.com/asynchronous-google-fonts -->
   <!-- connect to domain of font files -->
