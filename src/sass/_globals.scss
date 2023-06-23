@@ -61,30 +61,6 @@ img {
       padding-right: 3rem;
       padding-left: 3rem;
       width: 100%;
-
-      &.col--60 {
-        width: 100%;
-
-        @include media-up(xxl) {
-          width: 60%;
-        }
-      }
-
-      &.col--40 {
-        width: 100%;
-
-        @include media-up(xxl) {
-          width: 40%;
-        }
-      }
-
-      &.col--50 {
-        width: 100%;
-
-        @include media-up(xxl) {
-          width: 50%;
-        }
-      }
     }
   }
 }

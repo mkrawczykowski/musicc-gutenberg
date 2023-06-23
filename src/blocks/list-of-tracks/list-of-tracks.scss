@@ -1,3 +1,21 @@
-.list-of-trakcs-new {
-  background-color: red;
+@use '../../styles/global/' as global;
+
+.list-of-tracks {
+  .row {
+    &--arrow {
+      .col {
+        &:first-of-type {
+          @include media-up(xxl) {
+            width: 20%;
+          }
+        }
+
+        &:last-of-type {
+          @include media-up(xxl) {
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
 }

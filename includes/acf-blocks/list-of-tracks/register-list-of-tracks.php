@@ -20,16 +20,17 @@
 //   }
 // }
 
-function mcqa_register_block_related_quiz() {
+function register_list_of_tracks() {
     if ( ! function_exists( 'register_block_type' ) ) {
       return;
     }
 
-    register_block_type( 'acf/list-of-tracks', array(
-      // 'editor_script' => 'mcqac-related-quiz-block-script',
-      // 'editor_style'  => 'mcqac-related-quiz-block-editor-style',
-      'style'         => 'mcqac-related-quiz-block-frontend-style',
-    ));
+    register_block_type(
+	    __DIR__ . '/',
+	    array(
+		    'icon' => 'admin-home',
+	    )
+    );
 }
 
-add_action( 'init', 'mcqa_register_block_related_quiz' );
+add_action( 'init', 'register_list_of_tracks' );

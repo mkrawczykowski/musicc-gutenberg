@@ -6,9 +6,9 @@
 
 	<main class="">
 
-		<!-- <?php
+		<?php
 			the_content();
-		?> -->
+		?> 
 
 		<br>
 		<br>

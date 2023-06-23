@@ -1,0 +1,19 @@
+{
+  "name": "acf/list-of-tracks",
+  "title": "List of tracks",
+  "description": "Block with newest or featured tracks",
+  "style": [
+    "file:../../../dist/blocks/list-of-tracks/list-of-tracks.css"
+  ],
+  "category": "content",
+  "icon": "formatListBullets",
+  "keywords": [
+    "testimonial",
+    "quote"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "template-parts/blocks/list-of-tracks/list-of-tracks.php"
+  },
+  "align": "full"
+}

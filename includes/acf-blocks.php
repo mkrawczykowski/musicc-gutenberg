@@ -13,7 +13,7 @@ add_action( 'wp_enqueue_scripts', 'remove_wp_block_library_css', 100 );
 
 function acf_init_blocks() {
   if( function_exists('acf_register_block') ) {
-    require_once get_template_directory() . '/includes/acf-blocks/register-list-of-tracks.php';
+    require_once get_template_directory() . '/includes/acf-blocks/list-of-tracks/register-list-of-tracks.php';
   }
 }
 add_action('acf/init', 'acf_init_blocks');
