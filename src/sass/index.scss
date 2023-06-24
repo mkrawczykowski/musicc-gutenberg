@@ -1,11 +1,11 @@
-@import './_reset.scss';
-@import './_variables.scss';
+@use './_reset.scss';
+@use './_variables.scss';
 // @import './_typography.scss';
-@import './_globals.scss';
+@use './_globals.scss';
 
-@import './components/heading-text.scss';
-@import './components/track.scss';
-@import './structure/footer.scss';
+@use './components/heading-text.scss';
+// @import './components/track.scss';
+@use './structure/footer.scss';
 // @import './components/logo.scss';
 // @import './components/hamburger.scss';
 // @import './components/main-nav.scss';

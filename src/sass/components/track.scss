@@ -1,3 +1,5 @@
+@use '../variables' as variables;
+
 .track {
   display: flex;
   flex-direction: row;
@@ -9,9 +11,9 @@
     font-weight: 700;
     font-size: 1.8rem;
     line-height: 2.2rem;
-    color: $white;
+    color: variables.$white;
 
-    @include media-up(xl) {
+    @include variables.media-up(xl) {
       display: none;
     }
   }
@@ -22,10 +24,10 @@
     font-weight: 400;
     font-size: 1.4rem;
     line-height: 2.1rem;
-    color: $white;
+    color: variables.$white;
     margin-top: 2.7rem;
 
-    @include media-up(xxl) {
+    @include variables.media-up(xxl) {
       order: 2;
       width: 50%;
     }
@@ -36,14 +38,14 @@
     margin-top: 3.3rem;
     margin-bottom: 3rem;
 
-    @include media-up(xxl) {
+    @include variables.media-up(xxl) {
       order: 1;
       width: 100%;
     }
 
     &__player {
-      background: $whiteAlpha1;
-      box-shadow: 0px -226px 90px $blackAlpha1, 0px -127px 76px $blackAlpha2, 0px -56px 56px $blackAlpha3, 0px -14px 31px $blackAlpha1, 0px 0px 0px $blackAlpha1;
+      background: variables.$whiteAlpha1;
+      box-shadow: 0px -226px 90px variables.$blackAlpha1, 0px -127px 76px variables.$blackAlpha2, 0px -56px 56px variables.$blackAlpha3, 0px -14px 31px variables.$blackAlpha1, 0px 0px 0px variables.$blackAlpha1;
       border-radius: 4.4rem;
       display: flex;
       justify-content: flex-start;
@@ -53,13 +55,13 @@
       padding: 0 2.4rem 0 2.4rem;
       position: relative;
 
-      @include media-up(sm) {
+      @include variables.media-up(sm) {
         width: auto;
         flex-grow: 1;
         justify-content: space-between;
       }
 
-      @include media-up(xl) {
+      @include variables.media-up(xl) {
         height: 8.8rem;
         padding: 0 5.1rem 0 5rem;
       }
@@ -67,7 +69,7 @@
       &-name {
         display: none;
 
-        @include media-up(xl) {
+        @include variables.media-up(xl) {
           position: relative;
           top: -0.2rem;
           font-family: 'Inter', sans-serif;
@@ -96,7 +98,7 @@
         position: relative;
         top: -2px;
 
-        @include media-up(xl) {
+        @include variables.media-up(xl) {
           margin-right: 3.4rem;
         }
 
@@ -106,25 +108,25 @@
       }
 
       .track-box__track {
-        background-color: $gray1;
+        background-color: variables.$gray1;
         width: 9.11rem;
         height: 0.1rem;
         position: relative;
         margin-right: 1.1rem;
 
-        @include media-up(sm) {
+        @include variables.media-up(sm) {
           width: auto;
           flex-grow: 1;
         }
 
-        @include media-up(xl) {
+        @include variables.media-up(xl) {
           height: 0.4rem;
           border-radius: 0.2rem;
           margin-right: 1.8rem;
         }
 
         .track-box__pointer {
-          background: linear-gradient(90.75deg, $pink2 2.97%, $purple2 55.95%);
+          background: linear-gradient(90.75deg, variables.$pink2 2.97%, variables.$purple2 55.95%);
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           position: absolute;
           top: 0;
@@ -136,8 +138,8 @@
           top: -5px;
           left: 18px;
 
-          @include media-up(xxl) {
-            background: $gray1;
+          @include variables.media-up(xxl) {
+            background: variables.$gray1;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             width: 1.9rem;
             height: 1.8rem;
@@ -154,11 +156,11 @@
         font-weight: 400;
         font-size: 1.4rem;
         line-height: 1.7rem;
-        color: $gray1;
+        color: variables.$gray1;
         position: relative;
         top: -0.1rem;
 
-        @include media-up(xxl) {
+        @include variables.media-up(xxl) {
           font-size: 1.8rem;
           line-height: 2.2rem;
           top: 0.1rem;
@@ -209,7 +211,7 @@
     margin-bottom: 3rem;
     gap: 1.3rem 2.2rem;
 
-    @include media-up(xxl) {
+    @include variables.media-up(xxl) {
       order: 3;
       width: 50%;
     }
@@ -220,7 +222,7 @@
       font-weight: 400;
       font-size: 1.4rem;
       line-height: 2.1rem;
-      color: $white;
+      color: variables.$white;
     }
   }
 }

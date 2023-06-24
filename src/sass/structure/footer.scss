@@ -1,3 +1,5 @@
+@use '../variables' as variables;
+
 .footer {
   p {
     font-family: 'Poppins', sans-serif;
@@ -5,14 +7,14 @@
     font-weight: 400;
     font-size: 1.2rem;
     line-height: 1.8rem;
-    color: $white;
+    color: variables.$white;
 
-    @include media-up(lg) {
+    @include variables.media-up(lg) {
       font-size: 1.4rem;
       line-height: 2.1rem;
     }
 
-    @include media-up(xxl) {
+    @include variables.media-up(xxl) {
       font-size: 1.6rem;
       line-height: 2.4rem;
     }
@@ -25,7 +27,7 @@
     background: rgb(255, 0, 168);
     background: linear-gradient(139deg, rgba(255, 0, 168, 1) 0%, rgba(189, 0, 255, 1) 100%);
 
-    @include media-up(xxl) {
+    @include variables.media-up(xxl) {
       width: 48%;
     }
   }
@@ -35,7 +37,7 @@
       padding-top: 2.6rem;
       padding-bottom: 6.2rem;
 
-      @include media-up(xxl) {
+      @include variables.media-up(xxl) {
         padding-top: 4rem;
       }
     }
