@@ -1,17 +1,17 @@
-@use '../../styles/global/' as global;
+@use '../../sass/variables' as variables;
 
 .list-of-tracks {
   .row {
     &--arrow {
       .col {
         &:first-of-type {
-          @include media-up(xxl) {
+          @include variables.media-up(xxl) {
             width: 20%;
           }
         }
 
         &:last-of-type {
-          @include media-up(xxl) {
+          @include variables.media-up(xxl) {
             width: 80%;
           }
         }

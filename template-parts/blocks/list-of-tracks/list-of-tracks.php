@@ -14,11 +14,13 @@
 
   if (!function_exists('display_tracks')){
     function display_tracks($args){
-      $loop = new WP_Query( $args ); 
+      $loop = new WP_Query( $args );
               
-      while ( $loop->have_posts() ) : $loop->the_post(); 
-        print the_title(); 
-        the_excerpt();
+      while ( $loop->have_posts() ) : $loop->the_post();
+        get_template_part( 'template-parts/track-box', '', array(
+          'track_title' => get_the_title(),
+          'track_description' => get_the_excerpt(),
+        ) );
       endwhile;
 
       wp_reset_postdata();  
