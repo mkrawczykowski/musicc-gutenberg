@@ -18,8 +18,10 @@
               
       while ( $loop->have_posts() ) : $loop->the_post();
         get_template_part( 'template-parts/track-box', '', array(
-          'track_title' => get_the_title(),
+          'track_title'       => get_the_title(),
           'track_description' => get_the_excerpt(),
+          'track_length'      => get_field('track_length'),
+          'track_url'         => get_field('track_url'),
         ) );
       endwhile;
 
@@ -51,31 +53,26 @@
             $number_of_tracks_final = $number_of_tracks ? $number_of_tracks : 3;
 
             if ($type === 'latest'){
-              $args = array(
-                'post_type' => 'product',
-                'post_status' => 'publish',
-                'posts_per_page' => $number_of_tracks_final,
-                'orderby' => 'date', 
-                'order' => 'ASC',
-              );
-
-              display_tracks($args);
+              $type_for_loop = '';
+              $value_for_loop = '';
             }
 
             if ($type === 'featured'){
-              $args = array(  
-                'post_type' => 'product',
-                'post_status' => 'publish',
-                'posts_per_page' => $number_of_tracks_final,
-                'orderby' => 'date', 
-                'order' => 'ASC',
-                'meta_key' => 'featured',
-                'meta_value' => true
-              );
-
-              display_tracks($args);
+              $type_for_loop = $type;
+              $value_for_loop = true;
             }
-            
+
+            $args = array(  
+              'post_type' => 'product',
+              'post_status' => 'publish',
+              'posts_per_page' => $number_of_tracks_final,
+              'orderby' => 'date', 
+              'order' => 'ASC',
+              'meta_key' => $type_for_loop,
+              'meta_value' => $value_for_loop,
+            );
+
+            display_tracks($args);
           ?>
 
       </div>
