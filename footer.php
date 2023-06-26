@@ -37,6 +37,8 @@
       if (getCookie('cookiename') === 'yes'){
         console.log('cookie with yes')
       }
+
+      // document.body.style.overflow = "hidden";
   </script>
 
 </body>

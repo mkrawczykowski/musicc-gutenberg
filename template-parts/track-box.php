@@ -3,6 +3,7 @@
   $track_description = $args['track_description'];
   $track_length = $args['track_length'];
   $track_url = $args['track_url'];
+  $attributes = $args['attributes'];
 ?>
 
 <div class="track">
@@ -24,7 +25,10 @@
 			<li class="track-box__icon track-box__icon--share"><a href="#" target="_blank" rel="nofollow" class="track-box__link"></a></li>
 		</ul>
 	</div>
-	
+	<?php
+		print_r($attributes);
+	?>
+
   <ul class="track-terms">
 	  <li class="track__term"><a href="">happy</a></li>
 	  <li class="track__term"><a href="">mysterious</a></li>

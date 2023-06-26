@@ -11,23 +11,36 @@
   /**
    *  @param array $args WP_Query parameters array, see https://developer.wordpress.org/reference/classes/wp_query/parse_query/
    */
+if (!function_exists('display_tracks')){
+  function display_tracks($args){
+      
+      $posts = get_posts( $args );
 
-  if (!function_exists('display_tracks')){
-    function display_tracks($args){
-      $loop = new WP_Query( $args );
-              
-      while ( $loop->have_posts() ) : $loop->the_post();
-        get_template_part( 'template-parts/track-box', '', array(
-          'track_title'       => get_the_title(),
-          'track_description' => get_the_excerpt(),
-          'track_length'      => get_field('track_length'),
-          'track_url'         => get_field('track_url'),
-        ) );
-      endwhile;
+          if( $posts ):
+            global $post;
+            foreach( $posts as $post ): 
+                
+                setup_postdata( $post );
+                // print_r($post);
+                $tickets = new WC_Product( $post->ID);
+// $variables = $tickets->get_available_variations();
+print_r($tickets->attributes);
 
-      wp_reset_postdata();  
+                get_template_part( 'template-parts/track-box', '', array(
+                  'track_title'       => get_the_title(),
+                  'track_description' => get_the_excerpt(),
+                  'track_length'      => get_field('track_length', $post->ID),
+                  'track_url'         => get_field('track_url', $post->ID),
+                  'attributes'        => $post->get_attributes()
+                ));
+
+                endforeach; 
+              wp_reset_postdata();
+
+      endif;
     }
   }
+
 ?>
 <section class="list-of-tracks">
   <div class="container">
@@ -50,6 +63,7 @@
       <div class="col">
 
           <?php
+            
             $number_of_tracks_final = $number_of_tracks ? $number_of_tracks : 3;
 
             if ($type === 'latest'){
@@ -62,7 +76,7 @@
               $value_for_loop = true;
             }
 
-            $args = array(  
+            $args = array(
               'post_type' => 'product',
               'post_status' => 'publish',
               'posts_per_page' => $number_of_tracks_final,
