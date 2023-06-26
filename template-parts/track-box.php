@@ -1,10 +1,12 @@
 <?php
   $track_title = $args['track_title'];
   $track_description = $args['track_description'];
+  $track_length = $args['track_length'];
+  $track_url = $args['track_url'];
 ?>
 
 <div class="track">
-	<h3 class="track-name">Please, don't stop the music</h3>
+	<h3 class="track-name"><?php echo $track_title; ?></h3>
 	<p class="track-description"><?php echo $track_description; ?></p>
 	
   <div class="track-box">
@@ -14,12 +16,12 @@
 			<div class="track-box__track">
 				<span class="track-box__pointer"></span>
 			</div>
-			<span class="track-box__time">05:50</span>
+			<span class="track-box__time"><?php echo $track_length; ?></span>
 		</div>
 		
     <ul class="track-box__icons">
-			<li class="track-box__icon track-box__icon--download"></li>
-			<li class="track-box__icon track-box__icon--share"></li>
+			<li class="track-box__icon track-box__icon--download"><a href="#" target="_blank" rel="nofollow" class="track-box__link"></a></li>
+			<li class="track-box__icon track-box__icon--share"><a href="#" target="_blank" rel="nofollow" class="track-box__link"></a></li>
 		</ul>
 	</div>
 	
