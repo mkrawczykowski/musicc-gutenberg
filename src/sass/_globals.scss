@@ -28,6 +28,7 @@ body {
   background: radial-gradient(107.29% 212.17% at -7.29% -5.62%, rgba(9, 19, 6, 0.37) 0%, rgba(242, 145, 0, 0.350729) 0.01%, rgba(159, 32, 131, 0.2849) 0.02%, rgba(138, 28, 113, 0.246054) 24.92%, rgba(0, 0, 0, 0) 100%)
     /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
     , #16111C;
+  color: variables.$white;
 }
 
 img {

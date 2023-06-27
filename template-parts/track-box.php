@@ -26,21 +26,16 @@
 		</ul>
 	</div>
 	<?php
-		print_r($attributes);
-	?>
-
-  <ul class="track-terms">
-	  <li class="track__term"><a href="">happy</a></li>
-	  <li class="track__term"><a href="">mysterious</a></li>
-	  <li class="track__term"><a href="">happy</a></li>
-	  <li class="track__term"><a href="">warm</a></li>
-	  <li class="track__term"><a href="">happy</a></li>
-	  <li class="track__term"><a href="">mysterious</a></li>
-	  <li class="track__term"><a href="">happy</a></li>
-	  <li class="track__term"><a href="">piano</a></li>
-	  <li class="track__term"><a href="">warm</a></li>
-	  <li class="track__term"><a href="">mysterious</a></li>
-	  <li class="track__term"><a href="">piano</a></li>
-	  <li class="track__term"><a href="">happy</a></li>
-	</ul>
+	if ($attributes) : ?>
+		<ul class="track-terms">
+			<?php
+				foreach($attributes as $attribute){
+  				foreach ($attribute['options'] as $attribute){
+    				$attribute_name = get_term($attribute)->name;
+    				echo '<li class="track__term">'.$attribute_name.'</li>';
+  				}
+				}
+			?>
+		</ul>
+	<?php endif; ?>
 </div>

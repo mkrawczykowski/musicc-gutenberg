@@ -22,16 +22,23 @@ if (!function_exists('display_tracks')){
                 
                 setup_postdata( $post );
                 // print_r($post);
-                $tickets = new WC_Product( $post->ID);
-// $variables = $tickets->get_available_variations();
-print_r($tickets->attributes);
+                // $tickets = new WC_Product( $post->ID);
+                // // $variables = $tickets->get_available_variations();
+                // print_r($tickets->attributes);
+
+                global $product;
+
+
+$product_attributes = $product->get_attributes(); // Get the product attributes
+
+
 
                 get_template_part( 'template-parts/track-box', '', array(
                   'track_title'       => get_the_title(),
                   'track_description' => get_the_excerpt(),
                   'track_length'      => get_field('track_length', $post->ID),
                   'track_url'         => get_field('track_url', $post->ID),
-                  'attributes'        => $post->get_attributes()
+                  'attributes'        => $product_attributes
                 ));
 
                 endforeach; 
@@ -81,7 +88,7 @@ print_r($tickets->attributes);
               'post_status' => 'publish',
               'posts_per_page' => $number_of_tracks_final,
               'orderby' => 'date', 
-              'order' => 'ASC',
+              'order' => 'DESC',
               'meta_key' => $type_for_loop,
               'meta_value' => $value_for_loop,
             );
