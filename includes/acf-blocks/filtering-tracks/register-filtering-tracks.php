@@ -2,7 +2,7 @@
 
 <?php
 
-function register_list_of_tracks() {
+function register_filtering_tracks() {
     if ( ! function_exists( 'register_block_type' ) ) {
       return;
     }
@@ -15,4 +15,4 @@ function register_list_of_tracks() {
     );
 }
 
-add_action( 'init', 'register_list_of_tracks' );
+add_action( 'init', 'register_filtering_tracks' );

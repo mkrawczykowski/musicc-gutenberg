@@ -1,0 +1,20 @@
+{
+  "name": "acf/filtering-tracks",
+  "title": "Filtering tracks",
+  "description": "Block tracks and filters",
+  "style": [
+    "file:../../../dist/blocks/filtering-tracks/filtering-tracks.css"
+  ],
+  "category": "content",
+  "icon": "formatListBullets",
+  "keywords": [
+    "filter",
+    "filtering",
+    "tracks"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "template-parts/blocks/filtering-tracks/filtering-tracks.php"
+  },
+  "align": "full"
+}
