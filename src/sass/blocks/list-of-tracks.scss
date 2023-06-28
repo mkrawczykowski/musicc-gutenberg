@@ -9,5 +9,15 @@
 
       background-color: red;
     }
+
+    .track {
+      &:not(:last-of-type) {
+        margin-bottom: 7.2rem;
+
+        @include media-up(xxl) {
+          margin-bottom: 10.4rem;
+        }
+      }
+    }
   }
 }

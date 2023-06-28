@@ -7,47 +7,36 @@
   $number_of_tracks = get_field('number_of_tracks');
   $layout = get_field('layout');
 
-
   /**
-   *  @param array $args WP_Query parameters array, see https://developer.wordpress.org/reference/classes/wp_query/parse_query/
-   */
-if (!function_exists('display_tracks')){
+  *  @param array $args WP_Query parameters array, see https://developer.wordpress.org/reference/classes/wp_query/parse_query/
+  */
+
+  if (!function_exists('display_tracks')){
   function display_tracks($args){
-      
-      $posts = get_posts( $args );
+        
+    $posts = get_posts($args);
 
-          if( $posts ):
-            global $post;
-            foreach( $posts as $post ): 
-                
-                setup_postdata( $post );
-                // print_r($post);
-                // $tickets = new WC_Product( $post->ID);
-                // // $variables = $tickets->get_available_variations();
-                // print_r($tickets->attributes);
+    if( $posts ):
+      global $post;
+      foreach( $posts as $post ): 
+        setup_postdata( $post );
+        // global $product;
+        // $product_attributes = $product->get_attributes();
+        $terms = get_terms(array('taxonomy' => ['instrument', 'mood']));
+        // print("<pre>".print_r($terms,true)."</pre>");
 
-                global $product;
-
-
-$product_attributes = $product->get_attributes(); // Get the product attributes
-
-
-
-                get_template_part( 'template-parts/track-box', '', array(
-                  'track_title'       => get_the_title(),
-                  'track_description' => get_the_excerpt(),
-                  'track_length'      => get_field('track_length', $post->ID),
-                  'track_url'         => get_field('track_url', $post->ID),
-                  'attributes'        => $product_attributes
-                ));
-
-                endforeach; 
-              wp_reset_postdata();
-
-      endif;
-    }
-  }
-
+          get_template_part( 'template-parts/track-box', '', array(
+            'track_title'       => get_the_title(),
+            'track_description' => get_the_excerpt(),
+            'track_length'      => get_field('track_length', $post->ID),
+            'track_url'         => get_field('track_url', $post->ID),
+            'terms'             => $terms
+          ));
+      endforeach; 
+      wp_reset_postdata();
+    endif;
+  }  
+}
 ?>
 <section class="list-of-tracks">
   <div class="container">
@@ -84,7 +73,7 @@ $product_attributes = $product->get_attributes(); // Get the product attributes
             }
 
             $args = array(
-              'post_type' => 'product',
+              'post_type' => 'track',
               'post_status' => 'publish',
               'posts_per_page' => $number_of_tracks_final,
               'orderby' => 'date', 

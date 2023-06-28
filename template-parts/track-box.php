@@ -3,7 +3,7 @@
   $track_description = $args['track_description'];
   $track_length = $args['track_length'];
   $track_url = $args['track_url'];
-  $attributes = $args['attributes'];
+  $terms = $args['terms'];
 ?>
 
 <div class="track">
@@ -26,14 +26,12 @@
 		</ul>
 	</div>
 	<?php
-	if ($attributes) : ?>
+	if ($terms) : ?>
 		<ul class="track-terms">
 			<?php
-				foreach($attributes as $attribute){
-  				foreach ($attribute['options'] as $attribute){
-    				$attribute_name = get_term($attribute)->name;
-    				echo '<li class="track__term">'.$attribute_name.'</li>';
-  				}
+				foreach($terms as $term){
+					$term_name = $term->name;
+    			echo '<li class="track__term">'.$term_name.'</li>';
 				}
 			?>
 		</ul>

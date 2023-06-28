@@ -29,7 +29,11 @@
 
     @include variables.media-up(xxl) {
       order: 2;
-      width: 50%;
+      width: 26%;
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      margin-top: 3.2rem;
+      margin-left: 5.1rem;
     }
   }
 
@@ -37,10 +41,11 @@
     display: flex;
     margin-top: 3.3rem;
     margin-bottom: 3rem;
+    width: 100%;
 
     @include variables.media-up(xxl) {
       order: 1;
-      width: 100%;
+      width: 93.6rem;
     }
 
     &__player {
@@ -56,7 +61,7 @@
       position: relative;
 
       @include variables.media-up(sm) {
-        width: auto;
+        width: 100%;
         flex-grow: 1;
         justify-content: space-between;
       }
@@ -188,6 +193,12 @@
           transform: scale(0.75);
           top: -0.2rem;
           margin-left: 0.5rem;
+
+          @include media-up(xxl) {
+            transform: scale(1);
+            top: -0.1rem;
+            margin-left: 2.4rem;
+          }
         }
 
         &--share {
@@ -200,6 +211,12 @@
           transform: scale(0.73);
           top: -0.2rem;
           margin-left: 0.9rem;
+
+          @include media-up(xxl) {
+            transform: scale(1.03);
+            top: 0.1rem;
+            margin-left: 3.2rem;
+          }
         }
 
         .track-box__link {
@@ -220,6 +237,9 @@
     @include variables.media-up(xxl) {
       order: 3;
       width: 50%;
+      margin-left: 9.9rem;
+      margin-top: 3.1rem;
+      gap: 0.1rem 1.1rem;
     }
 
     .track__term {
@@ -229,6 +249,11 @@
       font-size: 1.4rem;
       line-height: 2.1rem;
       color: variables.$white;
+
+      @include variables.media-up(xxl) {
+        font-size: 1.4rem;
+        line-height: 2.1rem;
+      }
     }
   }
 }

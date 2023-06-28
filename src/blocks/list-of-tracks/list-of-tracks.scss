@@ -18,5 +18,13 @@
         }
       }
     }
+
+    .col {
+      .track {
+        &:not(:last-of-type) {
+          margin-bottom: 7.2rem;
+        }
+      }
+    }
   }
 }
