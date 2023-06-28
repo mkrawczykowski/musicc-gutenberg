@@ -3,7 +3,7 @@
 .heading-text {
   margin-bottom: 4.6rem;
 
-  @include media-up(xxl) {
+  @include variables.media-up(xxl) {
     margin-bottom: 4.3rem;
   }
 
