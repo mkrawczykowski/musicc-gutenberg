@@ -1,32 +1,35 @@
 <?php defined('ABSPATH') or die; ?>
 
 <a class="logo" href="<?php echo site_url(); ?>">
-  <img src="<?php echo get_stylesheet_directory_uri(); ?>/public/logo.svg" alt="LOGO" width="92" height="39">
+  <picture>
+    <source type="image/webp"
+      srcset="
+        <?php echo get_stylesheet_directory_uri(); ?>/public/images/logo-desktop@1x.png 1x,
+        <?php echo get_stylesheet_directory_uri(); ?>/public/images/logo-desktop@2x.png 2x,
+        <?php echo get_stylesheet_directory_uri(); ?>/public/images/logo-mobile@1x.png 1x,
+        <?php echo get_stylesheet_directory_uri(); ?>/public/images/logo-mobile@2x.png 2x,
+      "
+      sizes="
+        (max-width: 1400px) 163px,
+        317px
+      ">
+    <img
+      srcset="
+        <?php echo get_stylesheet_directory_uri(); ?>/public/images/logo-desktop@1x.png 1x,
+        <?php echo get_stylesheet_directory_uri(); ?>/public/images/logo-desktop@2x.png 2x,
+        <?php echo get_stylesheet_directory_uri(); ?>/public/images/logo-mobile@1x.png 1x,
+        <?php echo get_stylesheet_directory_uri(); ?>/public/images/logo-mobile@2x.png 2x,
+        "
+      sizes="
+        (max-width: 1400px) 163px,
+        317px
+      "
+      src="<?php echo get_stylesheet_directory_uri(); ?>/public/images/logo@1x.png"
+      alt="logo"
+      loading="eager"
+      decoding="async"
+      width="163"
+      height="20">
+  </picture>  
 </a>
 
-<picture>
-  <source type="image/webp"
-    srcset="
-      https://images.ctfassets.net/.../paris.jpg?w=100&fm=webp 100w,
-      https://images.ctfassets.net/.../paris.jpg?w=200&fm=webp 200w,
-      ..."
-    sizes="
-      (max-width: 768px) calc(100vw - 3em),
-      (max-width: 1376px) calc(50vw - 8em),
-      550px">
-  <img
-    srcset="
-      https://images.ctfassets.net/.../paris.jpg?w=100&fm=jpg&fl=progressive 100w,
-      https://images.ctfassets.net/.../paris.jpg?w=200&fm=jpg&fl=progressive 200w,
-      ..."
-    sizes="
-      (max-width: 768px) calc(100vw - 3em),
-      (max-width: 1376px) calc(50vw - 8em),
-      550px"
-    src="https://images.ctfassets.net/.../paris.jpg"
-    alt="Buildings of Paris"
-    loading="lazy"
-    decoding="async"
-    width="1243"
-    height="1500">
-</picture>
