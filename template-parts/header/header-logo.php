@@ -1,6 +1,6 @@
 <?php defined('ABSPATH') or die; ?>
 
-<!-- <a class="logo" href="<?php echo site_url(); ?>">
+<a class="logo" href="<?php echo site_url(); ?>">
   <img src="<?php echo get_stylesheet_directory_uri(); ?>/public/logo.svg" alt="LOGO" width="92" height="39">
 </a>
 
@@ -29,4 +29,4 @@
     decoding="async"
     width="1243"
     height="1500">
-</picture> -->
+</picture>

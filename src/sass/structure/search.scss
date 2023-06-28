@@ -1,0 +1,11 @@
+@use '../variables' as variables;
+
+.search {
+  background-color: variables.$gray2Alpha;
+  display: inline-block;
+  width: 100%;
+  height: 3.8rem;
+  color: #FFF;
+  font-size: 0.875rem;
+  font-family: Poppins;
+}
