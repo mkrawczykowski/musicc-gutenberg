@@ -2,6 +2,8 @@ const path = require('path');
 const glob = require('glob')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
+
 
 module.exports = (env, argv) => {
   return {
@@ -13,20 +15,31 @@ module.exports = (env, argv) => {
       }
       if (entry.includes('src\\')) {
         path = entry.replace('src\\', '')
-        acc['dist/main'] = './src/index.js'
+        acc['main'] = './src/index.js'
       }
       return acc
     }, {}),
     output: {
       filename: '[name].min.js',
-      path: path.resolve(__dirname, ''),
+      path: path.resolve(__dirname, 'dist'),
     },
     watchOptions: {
       ignored: /node_modules/,
     },
-    plugins: [new MiniCssExtractPlugin({
-      filename: "[name].css"
-    })],
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: "[name].css"
+      }),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: "**/*.asset",
+            to: "blocks/[name]/[name].asset.php",
+            context: './template-parts/blocks/',
+          },
+        ],
+      }),
+    ],
     module: {
       rules: [
         {
