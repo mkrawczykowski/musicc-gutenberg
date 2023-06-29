@@ -5,6 +5,9 @@
   "style": [
     "file:../../../dist/blocks/filtering-tracks/filtering-tracks.css"
   ],
+  "viewScript": [
+    "file:../../../dist/blocks/filtering-tracks/filtering-tracks.js"
+  ],
   "category": "content",
   "icon": "formatListBullets",
   "keywords": [

@@ -42,7 +42,8 @@
             <ul class="filtering-tracks__terms-widget">
               <?php
                 foreach ($instrument_terms as $instrument_term){
-                  echo '<li class="filtering-tracks__terms-widget" data-filter-term="' . $instrument_term->slug . '">' . $instrument_term->name . '</li>';
+                  // print_r($instrument_term);
+                  echo '<li class="filtering-tracks__terms-widget" data-filter-taxonomy="' . $taxonomy_slug . '" data-filter-term="' . $instrument_term->term_id . '">' . $instrument_term->name . '</li>';
                 }  
               ?>
             </ul>
@@ -54,7 +55,30 @@
         build_terms_filter_widget('track-type');
       ?>
 
-          
+      <script>
+        document.addEventListener('DOMContentLoaded', ()=>{
+          console.log('inline');
+
+          async function logJSONData(){
+            await fetch('https://musicc-gutenberg.test/wp-json/wp/v2/track?mood=4,57')
+            .then(response => {
+              console.log(typeof response);
+              if (response.status === 200){
+                console.log('ok');
+                return response.json();
+              } else {
+                console.log('nok');
+              }
+            })
+            .then(data => {
+              data.forEach((dataItem => console.log(dataItem)));
+            })
+          };
+
+          logJSONData();
+        });
+        
+      </script>
         
       </div>
       <div class="col">
