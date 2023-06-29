@@ -13,13 +13,13 @@ module.exports = (env, argv) => {
       }
       if (entry.includes('src\\')) {
         path = entry.replace('src\\', '')
-        acc['main'] = './src/index.js'
+        acc['dist/main'] = './src/index.js'
       }
       return acc
     }, {}),
     output: {
       filename: '[name].min.js',
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, ''),
     },
     watchOptions: {
       ignored: /node_modules/,
