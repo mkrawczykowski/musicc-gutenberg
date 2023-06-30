@@ -37,16 +37,16 @@
           $taxonomy_label = get_taxonomy($taxonomy_slug)->label;
 
           if (($instrument_terms) && (!is_wp_error($instrument_terms))) : ?>
-          
-            <h3>by <?php echo $taxonomy_label; ?></h3>
-            <ul class="filtering-tracks__terms-widget">
-              <?php
-                foreach ($instrument_terms as $instrument_term){
-                  // print_r($instrument_term);
-                  echo '<li class="filtering-tracks__terms-widget" data-filter-taxonomy="' . $taxonomy_slug . '" data-filter-term="' . $instrument_term->term_id . '">' . $instrument_term->name . '</li>';
-                }  
-              ?>
-            </ul>
+            <div class="filtering-tracks__terms-widget">
+              <h3>by <?php echo $taxonomy_label; ?></h3>
+                <ul class="filtering-tracks__terms-list">
+                  <?php
+                    foreach ($instrument_terms as $instrument_term){
+                      echo '<li class="filtering-tracks__term" data-filter-taxonomy="' . $taxonomy_slug . '" data-filter-term-id="' . $instrument_term->term_id . '">' . $instrument_term->name . '</li>';
+                    }  
+                  ?>
+                </ul>  
+            </div>
           <?php endif;
         }
 
@@ -54,31 +54,6 @@
         build_terms_filter_widget('mood');
         build_terms_filter_widget('track-type');
       ?>
-
-      <script>
-        document.addEventListener('DOMContentLoaded', ()=>{
-          console.log('inline');
-
-          async function logJSONData(){
-            await fetch('https://musicc-gutenberg.test/wp-json/wp/v2/track?mood=4,57')
-            .then(response => {
-              console.log(typeof response);
-              if (response.status === 200){
-                console.log('ok');
-                return response.json();
-              } else {
-                console.log('nok');
-              }
-            })
-            .then(data => {
-              data.forEach((dataItem => console.log(dataItem)));
-            })
-          };
-
-          logJSONData();
-        });
-        
-      </script>
         
       </div>
       <div class="col">

@@ -1,0 +1,14 @@
+.filtering-tracks {
+  &__terms-widget {
+    margin-bottom: 2rem;
+
+    .filtering-tracks__terms-list {
+      .filtering-tracks__term {
+        &.active {
+          font-weight: 600;
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
