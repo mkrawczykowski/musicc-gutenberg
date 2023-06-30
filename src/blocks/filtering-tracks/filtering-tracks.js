@@ -3,11 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('termsFilters');
   console.log(termsFilters);
   let existingTaxonomies = [];
-  let activeFilters = [];
+  let activeFilters = {};
 
   const arrayContains = (array, item) => {
     let contains = false;
-
     array.every(arrayItem => {
       if (arrayItem == item) {
         contains = true;
@@ -15,8 +14,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       return true;
     })
-
     return contains;
+  }
+
+  const removeFromArray = (array, itemToRemove) => {
+    if (arrayContains(array, itemToRemove)) {
+      const itemIndex = array.indexOf(itemToRemove);
+      const arrayWithItemRemoved = array.toSpliced(itemIndex, 1);
+      return arrayWithItemRemoved;
+    }
+    return array;
   }
 
   termsFilters.forEach(termsFilter => {
@@ -30,17 +37,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 
+  existingTaxonomies.forEach(existingTaxonomy => {
+    activeFilters[existingTaxonomy] = [];
+  })
+
+  console.log('activeFilters');
+  console.log(activeFilters);
+
   termsFilters.forEach(termsFilter => {
     termsFilter.addEventListener('click', () => {
       termsFilter.classList.toggle('active');
 
       if (termsFilter.classList.contains('active')) {
         activeFilters[termsFilter.dataset.filterTaxonomy].push(termsFilter.dataset.filterTermId);
+        console.log(activeFilters[termsFilter.dataset.filterTaxonomy]);
         console.log('added!');
-        console.log(activeFilters);
       }
 
+      if (!termsFilter.classList.contains('active')) {
+        activeFilters[termsFilter.dataset.filterTaxonomy] = removeFromArray(activeFilters[termsFilter.dataset.filterTaxonomy], termsFilter.dataset.filterTermId);
+        console.log('removed!');
+      }
 
+      console.log('activeFilters click');
+      console.log(activeFilters);
     })
   })
 
