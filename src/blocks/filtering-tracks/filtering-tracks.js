@@ -1,34 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
   const termsFilters = document.querySelectorAll('.filtering-tracks__terms-widget .filtering-tracks__term');
+  console.log('termsFilters');
   console.log(termsFilters);
   let existingTaxonomies = [];
   let activeFilters = [];
 
-  termsFilters.forEach(termsFilter => {
-    let arrayContains = false;
+  const arrayContains = (array, item) => {
+    let contains = false;
 
-    !existingTaxonomies.length ? existingTaxonomies.push(termsFilter.dataset.filterTaxonomy) : null;
-
-    existingTaxonomies.forEach(existingTaxonomy => {
-      console.log('forEach');
-      if (termsFilter.dataset.filterTaxonomy === existingTaxonomy) {
-        arrayContains = true;
+    array.every(arrayItem => {
+      if (arrayItem == item) {
+        contains = true;
+        return false;
       }
-      console.log('existingTaxonomy');
-      console.log(existingTaxonomy);
-      console.log('termsFilter.dataset.filterTaxonomy');
-      console.log(termsFilter.dataset.filterTaxonomy);
-      if (arrayContains === false) {
-        existingTaxonomies.push(termsFilter.dataset.filterTaxonomy);
-
-      }
+      return true;
     })
 
-    console.log('existingTaxonomies');
-    console.log(existingTaxonomies);
+    return contains;
+  }
 
-
-  });
+  termsFilters.forEach(termsFilter => {
+    if (!existingTaxonomies.length) {
+      existingTaxonomies.push(termsFilter.dataset.filterTaxonomy);
+    }
+    if (existingTaxonomies.length) {
+      if (!arrayContains(existingTaxonomies, termsFilter.dataset.filterTaxonomy)) {
+        existingTaxonomies.push(termsFilter.dataset.filterTaxonomy);
+      }
+    }
+  })
 
   termsFilters.forEach(termsFilter => {
     termsFilter.addEventListener('click', () => {
