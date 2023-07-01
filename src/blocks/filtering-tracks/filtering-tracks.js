@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const termsFilters = document.querySelectorAll('.filtering-tracks__terms-widget .filtering-tracks__term');
   let existingTaxonomies = [];
   let activeFilters = {};
+  let visibleFilters = {
+    instrument: ['64', '3'],
+    mood: ['65', '61', '62'],
+  };
 
   const arrayContains = (array, item) => {
     let contains = false;
@@ -14,6 +18,26 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     return contains;
   }
+
+  const updateVisibleFilters = () => {
+    if (Object.keys(visibleFilters).length) {
+      for (const visibleFiltersTaxonomy in visibleFilters) {
+        const allFilterTaxonomies = document.querySelectorAll(`[data-filter-taxonomy="${visibleFiltersTaxonomy}"]`);
+
+        allFilterTaxonomies.forEach(allFilterTaxonomy => {
+          const tArray = visibleFilters[visibleFiltersTaxonomy];
+
+          if (!arrayContains(tArray, allFilterTaxonomy.dataset.filterTermId)) {
+            allFilterTaxonomy.classList.add('hidden');
+          }
+        })
+      }
+    }
+  }
+
+  updateVisibleFilters();
+
+
 
   const removeFromArray = (array, itemToRemove) => {
     if (arrayContains(array, itemToRemove)) {
@@ -38,6 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
   existingTaxonomies.forEach(existingTaxonomy => {
     activeFilters[existingTaxonomy] = [];
   })
+
+  console.log('existingTaxonomies');
+  console.log(existingTaxonomies);
 
   termsFilters.forEach(termsFilter => {
     termsFilter.addEventListener('click', () => {
@@ -80,7 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       })
       .then(data => {
-        data.forEach((dataItem => console.log(dataItem)));
+        data.forEach((dataItem => {
+          console.log('========== ITEM =========')
+          console.log(dataItem);
+          existingTaxonomies.forEach(existingTaxonomy => {
+            console.log(dataItem[existingTaxonomy]);
+          })
+
+        }));
       })
   };
 });
