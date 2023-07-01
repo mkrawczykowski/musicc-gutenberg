@@ -1,10 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const termsFilters = document.querySelectorAll('.filtering-tracks__terms-widget .filtering-tracks__term');
-  console.log('termsFilters');
-  console.log(termsFilters);
   let existingTaxonomies = [];
   let activeFilters = {};
-  let activeFiltersString = '';
 
   const arrayContains = (array, item) => {
     let contains = false;
@@ -42,8 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     activeFilters[existingTaxonomy] = [];
   })
 
-
-
   termsFilters.forEach(termsFilter => {
     termsFilter.addEventListener('click', () => {
       termsFilter.classList.toggle('active');
@@ -54,12 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (termsFilter.classList.contains('active')) {
         activeFilters[termsFilter.dataset.filterTaxonomy].push(termsFilter.dataset.filterTermId);
         console.log(activeFilters[termsFilter.dataset.filterTaxonomy]);
-        console.log('added!');
       }
 
       if (!termsFilter.classList.contains('active')) {
         activeFilters[termsFilter.dataset.filterTaxonomy] = removeFromArray(activeFilters[termsFilter.dataset.filterTaxonomy], termsFilter.dataset.filterTermId);
-        console.log('removed!');
       }
 
       for (const taxonomy in activeFilters) {
@@ -72,41 +65,22 @@ document.addEventListener('DOMContentLoaded', () => {
           activeFiltersString = activeFiltersString + currentTaxonomyString;
           activeTaxonomiesOperatorString = activeTaxonomiesOperatorString + currentOperatorString;
           fetchString = activeFiltersString + activeTaxonomiesOperatorString;
-
-          console.log('activeFiltersString');
-          console.log(activeFiltersString);
-          console.log('activeTaxonomiesOperatorString');
-          console.log(activeTaxonomiesOperatorString);
-          console.log('activeFiltersString');
-          console.log(activeFiltersString + activeTaxonomiesOperatorString);
-          console.log('========');
         }
       }
       logJSONData(fetchString);
     })
   })
-  //tags[terms]=22,23&tags[operator]=AND
 
   async function logJSONData(fetchString) {
-    // await fetch('https://musicc-gutenberg.test/wp-json/wp/v2/track?mood=4,57')
-    // ======================= const fetchString = 'https://musicc-gutenberg.test/wp-json/wp/v2/track?' + taxonomiesString + ;
-    // fetchString = 'https://musicc-gutenberg.test/wp-json/wp/v2/track?instrument[terms]=3,60&instrument[operator]=AND';
-
-    // await fetch(fetchString)
     await fetch('https://musicc-gutenberg.test/wp-json/wp/v2/track?' + fetchString)
       .then(response => {
-        console.log(typeof response);
         if (response.status === 200) {
-          console.log('ok');
           return response.json();
         } else {
-          console.log('nok');
         }
       })
       .then(data => {
         data.forEach((dataItem => console.log(dataItem)));
       })
   };
-
-
 });
