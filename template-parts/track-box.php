@@ -8,7 +8,7 @@
 
 <div class="track">
 	<h3 class="track-name"><?php echo $track_title; ?></h3>
-	<p class="track-description"><?php echo $track_description; ?></p>
+	<div class="track-description"><?php echo $track_description; ?></div>
 	
   <div class="track-box">
 		<div class="track-box__player">

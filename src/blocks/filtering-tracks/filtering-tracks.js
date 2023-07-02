@@ -86,6 +86,30 @@ document.addEventListener('DOMContentLoaded', () => {
     return array;
   }
 
+  const buildTracksHTML = (allTracksArray) => {
+    if (allTracksArray.length) {
+      allTracksArray.forEach(singleTrackData => {
+        const divTrack = document.createElement("div");
+        divTrack.classList.add('track');
+
+        const h3TrackName = document.createElement("h3");
+        const h3TrackNameText = document.createTextNode(singleTrackData.title.rendered);
+        h3TrackName.classList.add('track-name');
+        h3TrackName.appendChild(h3TrackNameText);
+        divTrack.appendChild(h3TrackName);
+
+        const divTrackDescription = document.createElement("div");
+        divTrackDescription.classList.add('track-description');
+        const divTrackDescriptionText = document.createTextNode(singleTrackData.content.rendered)
+        divTrackDescription.appendChild(divTrackDescriptionText);
+        divTrack.appendChild(divTrackDescription);
+        console.log('divTrack');
+        console.log(divTrack);
+
+      })
+    }
+  }
+
   termsFilters.forEach(termsFilter => {
     if (!existingTaxonomies.length) {
       existingTaxonomies.push(termsFilter.dataset.filterTaxonomy);
@@ -145,6 +169,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       })
       .then(data => {
+        console.log('data');
+        console.log(data);
+
+        visibleFilters = {};
         data.forEach((dataItem => {
 
           console.log('====================== ITEM =======================')
@@ -161,13 +189,15 @@ document.addEventListener('DOMContentLoaded', () => {
             // console.log(thisTaxonomyArray);
 
             // console.log(dataItem[existingTaxonomy]);
+            updateVisibleFilters(existingTaxonomy, thisTaxonomyArray);
 
-            updateVisibleFilters(existingTaxonomy, thisTaxonomyArray)
 
           })
 
         }));
-        console.log('================================================= END ==================================================')
+        console.log('================================================= END ==================================================');
+
+        buildTracksHTML(data);
       })
   };
 });
