@@ -3,10 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
   let existingTaxonomies = [];
   let activeFilters = {};
   let visibleFilters = {
-    instrument: ['64', '3'],
-    mood: ['65', '61', '62'],
+    // instrument: ['64', '3'],
+    // mood: ['65', '61', '62'],
   };
 
+  /**
+   * 
+   * @param {array} array - One-dimensional array
+   * @param {string or number} item - Item to look for
+   * @returns true or false
+   */
   const arrayContains = (array, item) => {
     let contains = false;
     array.every(arrayItem => {
@@ -19,15 +25,16 @@ document.addEventListener('DOMContentLoaded', () => {
     return contains;
   }
 
+  /** Hides/shows HTML elements (adding/removing .hidden class) based on visibleFilters object. Doesn't do anything if visibleFilters is empty
+   * 
+   */
   const updateVisibleFilters = () => {
     if (Object.keys(visibleFilters).length) {
       for (const visibleFiltersTaxonomy in visibleFilters) {
         const allFilterTaxonomies = document.querySelectorAll(`[data-filter-taxonomy="${visibleFiltersTaxonomy}"]`);
 
         allFilterTaxonomies.forEach(allFilterTaxonomy => {
-          const tArray = visibleFilters[visibleFiltersTaxonomy];
-
-          if (!arrayContains(tArray, allFilterTaxonomy.dataset.filterTermId)) {
+          if (!arrayContains(visibleFilters[visibleFiltersTaxonomy], allFilterTaxonomy.dataset.filterTermId)) {
             allFilterTaxonomy.classList.add('hidden');
           }
         })
@@ -36,8 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   updateVisibleFilters();
-
-
 
   const removeFromArray = (array, itemToRemove) => {
     if (arrayContains(array, itemToRemove)) {
