@@ -25,10 +25,42 @@ document.addEventListener('DOMContentLoaded', () => {
     return contains;
   }
 
+  const updateVisibleFilters = (taxonomyName, taxonomyTerms) => {
+    // console.log('=======updateVisibleFilters========')
+    // console.log('taxonomyName')
+    // console.log(taxonomyName)
+    // console.log('taxonomyTerms')
+    // console.log(taxonomyTerms)
+
+    if (taxonomyTerms.length) {
+      taxonomyTerms.forEach(taxonomyTerm => {
+        if (visibleFilters[taxonomyName] === undefined) {
+          visibleFilters[taxonomyName] = [];
+        }
+        // console.log('taxonomyTerm')
+        // console.log(taxonomyTerm)
+        // console.log('visibleFilters[taxonomyName]')
+        // console.log(visibleFilters[taxonomyName])
+        // if (!Object.keys(visibleFilters)) {
+        //   console.log('był pusty, dodaję ' + taxonomyName)
+        //   visibleFilters[taxonomyName] = [];
+        // }
+        if (!arrayContains(visibleFilters[taxonomyName], taxonomyTerm)) {
+          visibleFilters[taxonomyName].push(taxonomyTerm);
+        }
+      })
+    }
+
+    console.log('88888888888888888 visibleFilters 88888888888888888888888')
+    console.log(visibleFilters);
+    updateHTMLFilters();
+
+  }
+
   /** Hides/shows HTML elements (adding/removing .hidden class) based on visibleFilters object. Doesn't do anything if visibleFilters is empty
    * 
    */
-  const updateVisibleFilters = () => {
+  const updateHTMLFilters = () => {
     if (Object.keys(visibleFilters).length) {
       for (const visibleFiltersTaxonomy in visibleFilters) {
         const allFilterTaxonomies = document.querySelectorAll(`[data-filter-taxonomy="${visibleFiltersTaxonomy}"]`);
@@ -37,12 +69,13 @@ document.addEventListener('DOMContentLoaded', () => {
           if (!arrayContains(visibleFilters[visibleFiltersTaxonomy], allFilterTaxonomy.dataset.filterTermId)) {
             allFilterTaxonomy.classList.add('hidden');
           }
+          if (arrayContains(visibleFilters[visibleFiltersTaxonomy], allFilterTaxonomy.dataset.filterTermId)) {
+            allFilterTaxonomy.classList.remove('hidden');
+          }
         })
       }
     }
   }
-
-  updateVisibleFilters();
 
   const removeFromArray = (array, itemToRemove) => {
     if (arrayContains(array, itemToRemove)) {
@@ -113,13 +146,28 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(data => {
         data.forEach((dataItem => {
-          console.log('========== ITEM =========')
+
+          console.log('====================== ITEM =======================')
           console.log(dataItem);
           existingTaxonomies.forEach(existingTaxonomy => {
-            console.log(dataItem[existingTaxonomy]);
+            let thisTaxonomyArray = [];
+            dataItem[existingTaxonomy].forEach(arrayItem => {
+              if (!arrayContains(thisTaxonomyArray, arrayItem)) {
+                thisTaxonomyArray.push(arrayItem);
+              }
+            })
+
+            // console.log('thisTaxonomyArray ' + existingTaxonomy);
+            // console.log(thisTaxonomyArray);
+
+            // console.log(dataItem[existingTaxonomy]);
+
+            updateVisibleFilters(existingTaxonomy, thisTaxonomyArray)
+
           })
 
         }));
+        console.log('================================================= END ==================================================')
       })
   };
 });
