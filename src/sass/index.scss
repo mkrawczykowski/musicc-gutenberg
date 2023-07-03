@@ -1,22 +1,10 @@
 @use './_reset.scss';
 @use './_variables.scss';
-// @import './_typography.scss';
 @use './_globals.scss';
 
 @use './components/heading-text.scss';
-// @import './components/track.scss';
+
 @use './structure/footer.scss';
 @use './structure/header.scss'; //index for header components
-// @import './components/logo.scss';
-// @import './components/hamburger.scss';
-// @import './components/main-nav.scss';
-// @import './components/button.scss';
-// @import './components/headings-text.scss';
-
-// @import './blocks/left-text-right-image.scss';
-// @import './blocks/logos-slider.scss';
-// @import './blocks/two-headings-text.scss';
-// @import './blocks/cards-with-icons.scss';
-// @import './blocks/video-file.scss';
-// @import './blocks/reviews-slider.scss';
-// @import './blocks/contact-info-contact-form.scss';
+@use './structure/logo.scss';
+@use './structure/hamburger.scss';

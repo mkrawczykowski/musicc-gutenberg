@@ -10,7 +10,7 @@
         <?php echo get_stylesheet_directory_uri(); ?>/public/images/logo-mobile@2x.png 2x,
       "
       sizes="
-        (max-width: 1400px) 163px,
+        (max-width: 1400px) 128px,
         317px
       ">
     <img
@@ -21,7 +21,7 @@
         <?php echo get_stylesheet_directory_uri(); ?>/public/images/logo-mobile@2x.png 2x,
         "
       sizes="
-        (max-width: 1400px) 163px,
+        (max-width: 1400px) 128px,
         317px
       "
       src="<?php echo get_stylesheet_directory_uri(); ?>/public/images/logo@1x.png"
