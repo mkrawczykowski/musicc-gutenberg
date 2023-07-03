@@ -45,12 +45,6 @@ img {
     max-width: 125rem;
   }
 
-  &.container--wider {
-    @include variables.media-up(xxl) {
-      max-width: 140rem;
-    }
-  }
-
   .row {
     display: flex;
     margin-left: -3rem;
@@ -62,6 +56,24 @@ img {
       padding-right: 3rem;
       padding-left: 3rem;
       width: 100%;
+    }
+
+    &--with-sidebar {
+      .col {
+        // width: 50%;
+
+        &:first-of-type {
+          @include variables.media-up(xxl) {
+            width: 30%;
+          }
+        }
+
+        &:last-of-type {
+          @include variables.media-up(xxl) {
+            width: 70%;
+          }
+        }
+      }
     }
   }
 }

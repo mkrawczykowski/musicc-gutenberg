@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   const termsFilters = document.querySelectorAll('.filtering-tracks__terms-widget .filtering-tracks__term');
+  const jsColTracks = document.getElementById('js-col-tracks');
+  const jsLoadingList = document.getElementById('js-loading-list');
   let existingTaxonomies = [];
   let activeFilters = {};
+  let trackHTMLString = '';
   let visibleFilters = {
     // instrument: ['64', '3'],
     // mood: ['65', '61', '62'],
@@ -77,6 +80,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  /**
+  * @param {String} HTML representing any number of sibling elements
+  * @return {NodeList} 
+  */
+  function htmlToElements(html) {
+    var template = document.createElement('template');
+    template.innerHTML = html;
+    console.log('template')
+    console.log(typeof template.content.childNodes)
+    return template.content.childNodes;
+  }
+
   const removeFromArray = (array, itemToRemove) => {
     if (arrayContains(array, itemToRemove)) {
       const itemIndex = array.indexOf(itemToRemove);
@@ -88,23 +103,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const buildTracksHTML = (allTracksArray) => {
     if (allTracksArray.length) {
+      jsColTracks.replaceChildren();
       allTracksArray.forEach(singleTrackData => {
-        const divTrack = document.createElement("div");
-        divTrack.classList.add('track');
+        // const divTrack = document.createElement("div");
+        // divTrack.classList.add('track');
 
-        const h3TrackName = document.createElement("h3");
-        const h3TrackNameText = document.createTextNode(singleTrackData.title.rendered);
-        h3TrackName.classList.add('track-name');
-        h3TrackName.appendChild(h3TrackNameText);
-        divTrack.appendChild(h3TrackName);
+        // const h3TrackName = document.createElement("h3");
+        // const h3TrackNameText = document.createTextNode(singleTrackData.title.rendered);
+        // h3TrackName.classList.add('track-name');
+        // h3TrackName.appendChild(h3TrackNameText);
+        // divTrack.appendChild(h3TrackName);
 
-        const divTrackDescription = document.createElement("div");
-        divTrackDescription.classList.add('track-description');
-        const divTrackDescriptionText = document.createTextNode(singleTrackData.content.rendered)
-        divTrackDescription.appendChild(divTrackDescriptionText);
-        divTrack.appendChild(divTrackDescription);
-        console.log('divTrack');
-        console.log(divTrack);
+        // const divTrackDescription = document.createElement("div");
+        // const divTrackDescriptionText = document.createTextNode(singleTrackData.content.rendered)
+        // divTrackDescription.classList.add('track-description');
+
+        // divTrackDescription.appendChild(divTrackDescriptionText);
+        // divTrack.appendChild(divTrackDescription);
+        // console.log('divTrack');
+        // console.log(divTrack);
+        loadingListHTMLString = `
+          <div class="filtering-tracks__loading-list active" id="js-loading-list">
+        `;
+
+        trackHTMLString = `
+          <div class="track">
+            <h3 class="track-name">${singleTrackData.title.rendered}</h3>
+            <div class="track-description">${singleTrackData.content.rendered}</div>
+            
+            <div class="track-box">
+              <div class="track-box__player">
+                <button class="track-box__button track-box__button--pause"></button>
+                <h3 class="track-box__player-name">${singleTrackData.title.rendered}</h3>
+                <div class="track-box__track">
+                  <span class="track-box__pointer"></span>
+                </div>
+                <span class="track-box__time">05:50</span>
+              </div>
+              
+              <ul class="track-box__icons">
+                <li class="track-box__icon track-box__icon--download"><a href="#" target="_blank" rel="nofollow" class="track-box__link"></a></li>
+                <li class="track-box__icon track-box__icon--share"><a href="#" target="_blank" rel="nofollow" class="track-box__link"></a></li>
+              </ul>
+            </div>
+          </div>
+        `;
+        const trackElement = htmlToElements(trackHTMLString);
+        // console.log(typeof trackElement);
+        // jsColTracks.append(trackElement);
+        // jsColTracks.insertAdjacentHTML('afterbegin', loadingListHTMLString);
+        jsColTracks.insertAdjacentHTML('afterbegin', trackHTMLString);
 
       })
     }
@@ -161,6 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   async function logJSONData(fetchString) {
+    jsLoadingList.classList.add('active');
     await fetch('https://musicc-gutenberg.test/wp-json/wp/v2/track?' + fetchString)
       .then(response => {
         if (response.status === 200) {
@@ -198,6 +247,10 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('================================================= END ==================================================');
 
         buildTracksHTML(data);
+        // trackHTMLString
+
+        // jsColTracks.insertAdjacentHTML('afterbegin', trackElement);
       })
+    jsLoadingList.classList.remove('active');
   };
 });

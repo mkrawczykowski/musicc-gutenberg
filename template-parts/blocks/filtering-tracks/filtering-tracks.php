@@ -21,10 +21,7 @@
 				</div>
       </div>
     </div>
-    <div class="row <?php echo $layout === 'arrow' ? 'row--arrow' : NULL; ?>">
-      <?php
-        echo $layout === 'arrow' ? '<div class="col">&nbsp;</div>' : NULL;
-      ?>
+    <div class="row row--with-sidebar">
       <div class="col">
         <?php
 
@@ -56,8 +53,9 @@
       ?>
         
       </div>
-      <div class="col">
-
+      <div class="col filtering-tracks__tracks">
+        <div class="filtering-tracks__loading-list" id="js-loading-list"></div>
+        <div class="filtering-tracks__tracks-col" id="js-col-tracks"></div>
           <?php
             
             // $number_of_tracks_final = $number_of_tracks ? $number_of_tracks : 3;
