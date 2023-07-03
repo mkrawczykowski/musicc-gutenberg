@@ -5,10 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let existingTaxonomies = [];
   let activeFilters = {};
   let trackHTMLString = '';
-  let visibleFilters = {
-    // instrument: ['64', '3'],
-    // mood: ['65', '61', '62'],
-  };
+  let visibleFilters = {};
 
   /**
    * 
@@ -29,35 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const updateVisibleFilters = (taxonomyName, taxonomyTerms) => {
-    // console.log('=======updateVisibleFilters========')
-    // console.log('taxonomyName')
-    // console.log(taxonomyName)
-    // console.log('taxonomyTerms')
-    // console.log(taxonomyTerms)
-
     if (taxonomyTerms.length) {
       taxonomyTerms.forEach(taxonomyTerm => {
         if (visibleFilters[taxonomyName] === undefined) {
           visibleFilters[taxonomyName] = [];
         }
-        // console.log('taxonomyTerm')
-        // console.log(taxonomyTerm)
-        // console.log('visibleFilters[taxonomyName]')
-        // console.log(visibleFilters[taxonomyName])
-        // if (!Object.keys(visibleFilters)) {
-        //   console.log('był pusty, dodaję ' + taxonomyName)
-        //   visibleFilters[taxonomyName] = [];
-        // }
         if (!arrayContains(visibleFilters[taxonomyName], taxonomyTerm)) {
           visibleFilters[taxonomyName].push(taxonomyTerm);
         }
       })
     }
-
-    console.log('88888888888888888 visibleFilters 88888888888888888888888')
-    console.log(visibleFilters);
     updateHTMLFilters();
-
   }
 
   /** Hides/shows HTML elements (adding/removing .hidden class) based on visibleFilters object. Doesn't do anything if visibleFilters is empty
@@ -87,8 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function htmlToElements(html) {
     var template = document.createElement('template');
     template.innerHTML = html;
-    console.log('template')
-    console.log(typeof template.content.childNodes)
     return template.content.childNodes;
   }
 
@@ -105,27 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (allTracksArray.length) {
       jsColTracks.replaceChildren();
       allTracksArray.forEach(singleTrackData => {
-        // const divTrack = document.createElement("div");
-        // divTrack.classList.add('track');
-
-        // const h3TrackName = document.createElement("h3");
-        // const h3TrackNameText = document.createTextNode(singleTrackData.title.rendered);
-        // h3TrackName.classList.add('track-name');
-        // h3TrackName.appendChild(h3TrackNameText);
-        // divTrack.appendChild(h3TrackName);
-
-        // const divTrackDescription = document.createElement("div");
-        // const divTrackDescriptionText = document.createTextNode(singleTrackData.content.rendered)
-        // divTrackDescription.classList.add('track-description');
-
-        // divTrackDescription.appendChild(divTrackDescriptionText);
-        // divTrack.appendChild(divTrackDescription);
-        // console.log('divTrack');
-        // console.log(divTrack);
         loadingListHTMLString = `
           <div class="filtering-tracks__loading-list active" id="js-loading-list">
         `;
-
         trackHTMLString = `
           <div class="track">
             <h3 class="track-name">${singleTrackData.title.rendered}</h3>
@@ -148,12 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
         `;
-        const trackElement = htmlToElements(trackHTMLString);
-        // console.log(typeof trackElement);
-        // jsColTracks.append(trackElement);
-        // jsColTracks.insertAdjacentHTML('afterbegin', loadingListHTMLString);
         jsColTracks.insertAdjacentHTML('afterbegin', trackHTMLString);
-
       })
     }
   }
@@ -173,9 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     activeFilters[existingTaxonomy] = [];
   })
 
-  console.log('existingTaxonomies');
-  console.log(existingTaxonomies);
-
   termsFilters.forEach(termsFilter => {
     termsFilter.addEventListener('click', () => {
       termsFilter.classList.toggle('active');
@@ -185,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (termsFilter.classList.contains('active')) {
         activeFilters[termsFilter.dataset.filterTaxonomy].push(termsFilter.dataset.filterTermId);
-        console.log(activeFilters[termsFilter.dataset.filterTaxonomy]);
       }
 
       if (!termsFilter.classList.contains('active')) {
@@ -218,14 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       })
       .then(data => {
-        console.log('data');
-        console.log(data);
-
         visibleFilters = {};
         data.forEach((dataItem => {
-
-          console.log('====================== ITEM =======================')
-          console.log(dataItem);
           existingTaxonomies.forEach(existingTaxonomy => {
             let thisTaxonomyArray = [];
             dataItem[existingTaxonomy].forEach(arrayItem => {
@@ -233,23 +177,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 thisTaxonomyArray.push(arrayItem);
               }
             })
-
-            // console.log('thisTaxonomyArray ' + existingTaxonomy);
-            // console.log(thisTaxonomyArray);
-
-            // console.log(dataItem[existingTaxonomy]);
             updateVisibleFilters(existingTaxonomy, thisTaxonomyArray);
-
-
           })
-
         }));
-        console.log('================================================= END ==================================================');
-
         buildTracksHTML(data);
-        // trackHTMLString
-
-        // jsColTracks.insertAdjacentHTML('afterbegin', trackElement);
       })
     jsLoadingList.classList.remove('active');
   };
