@@ -4,34 +4,74 @@
   position: relative;
   width: 3rem;
   height: 3rem;
-  background-color: rgba(255, 255, 255, 0.432);
+  margin: 0 -0.4rem 0 0;
+  cursor: pointer;
 
   span {
     position: absolute;
     background: variables.$white;
     display: inline-block;
-    width: 1.7rem;
-    height: 0.3rem;
+    width: 1.9rem;
+    height: 0.2rem;
     border-radius: 2rem;
+    transform-origin: center;
 
     &:nth-of-type(1) {
-      top: 0;
-      left: 0;
+      top: 0.7rem;
+      left: 0.7rem;
+      opacity: 1;
+      transition: all 0.2s ease;
     }
 
     &:nth-of-type(2) {
       top: 1.4rem;
-      left: 0;
+      left: 0.7rem;
+      transition: all 0.4s ease;
     }
 
     &:nth-of-type(3) {
       top: 1.4rem;
-      left: 0;
+      left: 0.7rem;
+      transition: all 0.4s ease;
     }
 
     &:nth-of-type(4) {
-      top: 100%;
-      left: 0;
+      top: 2.2rem;
+      left: 0.7rem;
+      opacity: 1;
+      transition: all 0.2s ease;
+    }
+  }
+
+  &.active {
+    span {
+      height: 0.3rem;
+
+      &:nth-of-type(1) {
+        opacity: 0;
+        transition: all 0.2s ease;
+      }
+
+      &:nth-of-type(2) {
+        width: 2.6rem;
+        top: 1.6rem;
+        left: 0.4rem;
+        transform: rotateZ(45deg);
+        transition: all 0.4s ease;
+      }
+
+      &:nth-of-type(3) {
+        width: 2.6rem;
+        top: 1.6rem;
+        left: 0.4rem;
+        transform: rotateZ(-45deg);
+        transition: all 0.4s ease;
+      }
+
+      &:nth-of-type(4) {
+        opacity: 0;
+        transition: all 0.2s ease;
+      }
     }
   }
 }
