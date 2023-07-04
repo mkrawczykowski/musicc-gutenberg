@@ -82,8 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (allTracksArray.length) {
       jsColTracks.replaceChildren();
       allTracksArray.forEach(singleTrackData => {
-        console.log('singleTrackData')
-        console.log(singleTrackData)
         loadingListHTMLString = `
           <div class="filtering-tracks__loading-list active" id="js-loading-list">
         `;
@@ -92,17 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
           let termIDsForThisTaxonomy = singleTrackData[existingTaxonomy];
           termIDsForThisTaxonomy.forEach(termIDForThisTaxonomy => {
             const thisTermName = document.querySelector(`[data-filter-taxonomy="${existingTaxonomy}"][data-filter-term-id="${termIDForThisTaxonomy}"]`);
-            // console.log('thisTermName');
-            // console.log(thisTermName.innerText);
             ulTrackTerms += `<li class="track__term">${thisTermName.innerText}</li>`
           })
 
         })
         ulTrackTerms += '</ul>';
-        console.log('ulTrackTerms')
-        console.log(ulTrackTerms)
-
-        console.log(singleTrackData['mood']);
         trackHTMLString = `
           <div class="track">
             <h3 class="track-name">${singleTrackData.title.rendered}</h3>
