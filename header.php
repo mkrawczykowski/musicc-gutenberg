@@ -41,7 +41,7 @@
           <?php get_template_part( 'template-parts/header/header', 'search' ); ?>
           <?php get_template_part( 'template-parts/header/header', 'logo' ); ?>
           <?php get_template_part( 'template-parts/header/header', 'hamburger' ); ?>
-          <!-- <?php get_template_part( 'template-parts/header/header', 'main-menu' ); ?> -->
+          <?php get_template_part( 'template-parts/header/header', 'main-menu' ); ?>
         </nav>
       </div>
     </div>
