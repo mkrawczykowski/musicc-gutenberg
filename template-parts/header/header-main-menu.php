@@ -13,6 +13,43 @@
 
     echo '<li ' . $target_html .' class="main-menu__menu-item"><a href="' . $uri .'" class="main-menu__menu-link">' . $label .'</a></li>';
   }
+
+  function generate_list_menu_widget($widget_slug, $taxonomy_slug, $mega_menu){
+    $generated_widget_name = $widget_slug . '_widget_name';
+    $generated_how_many_items = $widget_slug . '_how_many_items_before_show_all_link';
+    $generated_show_all_label = $widget_slug . '_show_all_label';
+    $generated_show_all_link = $widget_slug . '_show_all_link';
+
+    $widget_name = $mega_menu[$generated_widget_name];
+    $how_many_items = $mega_menu[$generated_how_many_items];
+    $generated_show_all_label = $mega_menu[$generated_show_all_label];
+    $generated_show_all_link = $mega_menu[$generated_show_all_link];
+
+    $terms = get_terms($taxonomy_slug);?>
+    <div class="main-menu__widget">
+      <h3 class="main-menu__widget-name"><?php echo $widget_name; ?></h3>
+      <ul class="main-menu__widget-list">
+        <?php
+        $countTerms = count($terms);
+        $iterating_length = $how_many_items >= $countTerms ? $countTerms : $how_many_items;
+         
+        for ($i = 0; $i < $iterating_length ; $i++) : ?>
+          <li class="main-menu__widget-list-item">
+            <a href="<?php the_permalink($terms[$i]->term_id); ?>" class="main-menu__widget-list-link">
+              <?php echo $terms[$i]->name; ?>
+            </a>
+          </li>
+        <?php endfor; ?>
+      </ul>
+      <?php
+        if ($generated_show_all_link && $generated_show_all_label): ?>
+          <a class="main-menu__widget-link" href="<?php echo $generated_show_all_link; ?>">
+            <?php echo $generated_show_all_label; ?>
+          </a>
+      <?php endif; ?>
+    </div>
+  <?php
+  }
 ?>
 
 <div class="main-menu">
@@ -33,11 +70,14 @@ if( have_rows('main_menu_repeater', 'options') ): ?>
         case 'external_link';
           $external_link = get_sub_field('external_link', 'options');
           $external_link_custom_label = get_sub_field('external_link_custom_label', 'options');
-          generate_menu_link(get_the_permalink($internalexternal_link_link->ID), esc_html($external_link_custom_label), '');
+          generate_menu_link(get_the_permalink($external_link_link->ID), esc_html($external_link_custom_label), '');
         break;
         case 'mega_menu_1';
           $mega_menu = get_sub_field('mega_menu', 'options');
           $mega_menu_label = get_sub_field('mega_menu_label', 'options');
+
+          generate_list_menu_widget('moods', 'mood', $mega_menu);
+          generate_list_menu_widget('instruments', 'instrument', $mega_menu);
         break;
       }
     endwhile;
