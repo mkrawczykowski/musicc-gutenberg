@@ -1,0 +1,21 @@
+{
+  "name": "acf/hero-section",
+  "title": "Hero section",
+  "description": "Block tracks and filters",
+  "style": [
+    "file:../../../dist/blocks/hero-section/hero-section.css"
+  ],
+  "viewScript": [
+    "file:../../../dist/blocks/hero-section/hero-section.js"
+  ],
+  "category": "content",
+  "icon": "formatListBullets",
+  "keywords": [
+    "hero"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "template-parts/blocks/hero-section/hero-section.php"
+  },
+  "align": "full"
+}

@@ -14,6 +14,7 @@ function acf_init_blocks() {
   if( function_exists('acf_register_block') ) {
     require_once get_template_directory() . '/includes/acf-blocks/list-of-tracks/register-list-of-tracks.php';
     require_once get_template_directory() . '/includes/acf-blocks/filtering-tracks/register-filtering-tracks.php';
+    require_once get_template_directory() . '/includes/acf-blocks/hero-section/register-hero-section.php';
   }
 }
 add_action('acf/init', 'acf_init_blocks');
