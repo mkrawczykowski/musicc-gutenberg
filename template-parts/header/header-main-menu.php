@@ -14,6 +14,13 @@
     echo '<li ' . $target_html .' class="main-menu__menu-item"><a href="' . $uri .'" class="main-menu__menu-link">' . $label .'</a></li>';
   }
 
+  /**
+   * Generates ul list widget in mega menu
+   * @param string $widget_slug Prefix of ACF fields in this widget's group
+   * @param string $taxonomy_slug Slug of this particular taxonomy
+   * @param array $mega_menu Array of fields taken from get_sub_field('mega_menu', 'options'); in mega_menu_1
+   */
+
   function generate_list_menu_widget($widget_slug, $taxonomy_slug, $mega_menu){
     $generated_widget_name = $widget_slug . '_widget_name';
     $generated_how_many_items = $widget_slug . '_how_many_items_before_show_all_link';
@@ -59,7 +66,6 @@ if( have_rows('main_menu_repeater', 'options') ): ?>
     <?php
     while( have_rows('main_menu_repeater', 'options') ) : the_row();
       $menu_item_type = get_sub_field('menu_item_type', 'options');
-
       switch ($menu_item_type){
         case 'internal_link';
           $internal_link = get_sub_field('internal_link', 'options');
