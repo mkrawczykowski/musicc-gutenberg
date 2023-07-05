@@ -4,7 +4,7 @@
   get_header();
 ?>
 
-	<main class="">
+	<main class="main">
 
 		<?php
 			the_content();

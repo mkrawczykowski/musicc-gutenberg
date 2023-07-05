@@ -3,5 +3,10 @@
 @import './logo.scss';
 @import './hamburger.scss';
 @import './main-menu.scss';
+@import './mega-menu.scss';
 
-.header {}
+.header {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+}

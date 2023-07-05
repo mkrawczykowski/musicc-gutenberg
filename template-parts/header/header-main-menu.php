@@ -15,7 +15,7 @@
   }
 
   function generate_mega_menu_link($label, $mega_menu){
-    echo '<li class="main-menu__menu-item">';
+    echo '<li class="main-menu__menu-item has-children">';
     echo '<a class="main-menu__menu-link">' . $label .'</a>';
     generate_mega_menu_1_panel($mega_menu);
     echo '</li>';

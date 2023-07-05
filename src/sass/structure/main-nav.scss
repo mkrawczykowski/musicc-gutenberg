@@ -1,3 +1,5 @@
+@use '../variables' as variables;
+
 .main-nav {
   margin: 0 -3rem;
   padding: 1.7rem 3rem;
@@ -5,4 +7,22 @@
   flex-wrap: wrap;
   gap: 2.8rem;
   justify-content: space-between;
+
+  .main-menu {
+    height: 0;
+    max-height: 0;
+    transition: all 0.8s ease;
+  }
+
+  &.active {
+    border-radius: 0px 0px 1rem 1rem;
+    background: variables.$whiteAlpha3;
+    backdrop-filter: blur(25px);
+
+    .main-menu {
+      height: auto;
+      max-height: 9999px;
+      transition: all 0.8s ease;
+    }
+  }
 }
