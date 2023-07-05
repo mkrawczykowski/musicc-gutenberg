@@ -11,7 +11,14 @@
   function generate_menu_link($uri, $label, $target){
     $target_html = $target ? 'target="' . $target .'" ' : NULL;
 
-    echo '<li ' . $target_html .' class="main-menu__menu-item"><a href="' . $uri .'" class="main-menu__menu-link">' . $label .'</a></li>';
+    echo '<li class="main-menu__menu-item"><a ' . $target_html .' href="' . $uri .'" class="main-menu__menu-link">' . $label .'</a></li>';
+  }
+
+  function generate_mega_menu_link($label, $mega_menu){
+    echo '<li class="main-menu__menu-item">';
+    echo '<a class="main-menu__menu-link">' . $label .'</a>';
+    generate_mega_menu_1_panel($mega_menu);
+    echo '</li>';
   }
 
   /**
@@ -57,6 +64,55 @@
     </div>
   <?php
   }
+
+
+  /**
+   * Generates text widget in mega menu
+   * @param string $widget_slug Prefix of ACF fields in this widget's group
+   * @param array $mega_menu Array of fields taken from get_sub_field('mega_menu', 'options'); in mega_menu_1
+   */
+
+  function generate_text_menu_widget($widget_slug, $mega_menu){
+    $generated_widget_name = $widget_slug . '_widget_name';
+    $generated_widget_description = $widget_slug . '_widget_description';
+    $generated_show_all_label = $widget_slug . '_show_all_label';
+    $generated_show_all_link = $widget_slug . '_show_all_link';
+    
+    $widget_name = $mega_menu[$generated_widget_name];
+    $widget_description = $mega_menu[$generated_widget_description];
+    $show_all_label = $mega_menu[$generated_show_all_label];
+    $show_all_link = $mega_menu[$generated_show_all_link];
+    ?>
+    <div class="main-menu__widget">
+      <?php
+
+      echo $widget_name ? '<h3 class="main-menu__widget-name">' . $widget_name . '</h3>' : NULL;
+      echo $widget_description ? '<p>' . $widget_description . '</p>' : NULL;
+      if ($show_all_label && $show_all_link) : ?>
+        <a href="<?php echo $show_all_link; ?>"><?php echo $show_all_label; ?></a>
+      <?php endif; ?>
+      
+    </div>
+    <?php
+  }
+
+  function generate_mega_menu_1_panel($mega_menu){ ?>
+    <div class="mega-menu mega-menu--type-1">
+      <div class="mega-menu__column-narrow">
+        <?php generate_list_menu_widget('moods', 'mood', $mega_menu); ?>
+      </div>
+      <div class="mega-menu__column-narrow">
+        <?php generate_list_menu_widget('instruments', 'instrument', $mega_menu); ?>
+      </div>
+      <div class="mega-menu__column-wide">
+        <?php
+          generate_text_menu_widget('featured', $mega_menu);
+          generate_text_menu_widget('popular', $mega_menu);
+        ?>
+      </div>
+    </div>
+    <?php
+  }
 ?>
 
 <div class="main-menu">
@@ -82,17 +138,12 @@ if( have_rows('main_menu_repeater', 'options') ): ?>
           $mega_menu = get_sub_field('mega_menu', 'options');
           $mega_menu_label = get_sub_field('mega_menu_label', 'options');
 
-          generate_list_menu_widget('moods', 'mood', $mega_menu);
-          generate_list_menu_widget('instruments', 'instrument', $mega_menu);
+          generate_mega_menu_link($mega_menu_label, $mega_menu);
         break;
       }
     endwhile;
 
 endif;
-?>
-
-  
-    <!-- <li class="main-menu__menu-item"><a href="" class="main-menu__menu-link">Link</a></li> -->
-    
+?>    
   </ul>
 </div>
