@@ -4,12 +4,13 @@ A website with stock music produced by myself. Main feature will be a section wi
 
 - coded from Figma
 - (almost) pixel perfect
+- mega menu
+- WP REST API
 - SASS + BEM
 - Wordpress
 - DRY PHP code
 - custom Gutenberg blocks built with ACF Pro
 - Webpack
-- ...aaand some JavaScript
 
 ## Exported PNGs from Figma project
 - desktop version: https://stronyireszta.pl/github-portfolio/musicc/desktop.png
