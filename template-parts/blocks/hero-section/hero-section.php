@@ -7,7 +7,7 @@
 
 <section class="hero-section">
   <div class="container">
-    <div class="row">
+    <div class="row row--wide-narrow">
       <div class="col">
         <div class="heading-text">
           <?php

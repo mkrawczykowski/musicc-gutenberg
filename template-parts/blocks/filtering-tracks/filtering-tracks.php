@@ -24,27 +24,28 @@
     <div class="row row--with-sidebar">
       <div class="col">
         <?php
+        if (!function_exists('build_terms_filter_widget')){
+          function build_terms_filter_widget($taxonomy_slug){
+            $instrument_terms = get_terms(array(
+              'taxonomy' => $taxonomy_slug,
+              'hide_empty' => false,
+            ));
 
-        function build_terms_filter_widget($taxonomy_slug){
-          $instrument_terms = get_terms(array(
-            'taxonomy' => $taxonomy_slug,
-            'hide_empty' => false,
-          ));
+            $taxonomy_label = get_taxonomy($taxonomy_slug)->label;
 
-          $taxonomy_label = get_taxonomy($taxonomy_slug)->label;
-
-          if (($instrument_terms) && (!is_wp_error($instrument_terms))) : ?>
-            <div class="filtering-tracks__terms-widget">
-              <h3>by <?php echo $taxonomy_label; ?></h3>
-                <ul class="filtering-tracks__terms-list">
-                  <?php
-                    foreach ($instrument_terms as $instrument_term){
-                      echo '<li class="filtering-tracks__term" data-filter-taxonomy="' . $taxonomy_slug . '" data-filter-term-id="' . $instrument_term->term_id . '">' . $instrument_term->name . '</li>';
-                    }  
-                  ?>
-                </ul>  
-            </div>
-          <?php endif;
+            if (($instrument_terms) && (!is_wp_error($instrument_terms))) : ?>
+              <div class="filtering-tracks__terms-widget">
+                <h3>by <?php echo $taxonomy_label; ?></h3>
+                  <ul class="filtering-tracks__terms-list">
+                    <?php
+                      foreach ($instrument_terms as $instrument_term){
+                        echo '<li class="filtering-tracks__term" data-filter-taxonomy="' . $taxonomy_slug . '" data-filter-term-id="' . $instrument_term->term_id . '">' . $instrument_term->name . '</li>';
+                      }  
+                    ?>
+                  </ul>  
+              </div>
+            <?php endif;
+          }  
         }
 
         build_terms_filter_widget('instrument');
