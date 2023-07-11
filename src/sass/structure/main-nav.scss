@@ -7,22 +7,24 @@
   flex-wrap: wrap;
   gap: 2.8rem;
   justify-content: space-between;
+  transition: all 0.1s ease;
 
   .main-menu {
     height: 0;
     max-height: 0;
-    transition: all 0.8s ease;
+    transition: all 0.3s ease;
   }
 
   &.active {
     border-radius: 0px 0px 1rem 1rem;
     background: variables.$whiteAlpha3;
     backdrop-filter: blur(25px);
+    transition: all 0.1s ease;
 
     .main-menu {
       height: auto;
       max-height: 9999px;
-      transition: all 0.8s ease;
+      transition: all 0.3s ease;
     }
   }
 }
