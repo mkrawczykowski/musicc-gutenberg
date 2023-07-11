@@ -41,26 +41,28 @@
 
     $terms = get_terms($taxonomy_slug);?>
     <div class="main-menu__widget">
-      <h3 class="main-menu__widget-name"><?php echo $widget_name; ?></h3>
-      <ul class="main-menu__widget-list">
+
+        <h3 class="main-menu__widget-name js-main-menu-widget-list-name"><?php echo $widget_name; ?></h3>
+        <ul class="main-menu__widget-list">
+          <?php
+          $countTerms = count($terms);
+          $iterating_length = $how_many_items >= $countTerms ? $countTerms : $how_many_items;
+          
+          for ($i = 0; $i < $iterating_length ; $i++) : ?>
+            <li class="main-menu__widget-list-item">
+              <a href="<?php the_permalink($terms[$i]->term_id); ?>" class="main-menu__widget-list-link">
+                <?php echo $terms[$i]->name; ?>
+              </a>
+            </li>
+          <?php endfor; ?>
+        </ul>
         <?php
-        $countTerms = count($terms);
-        $iterating_length = $how_many_items >= $countTerms ? $countTerms : $how_many_items;
-         
-        for ($i = 0; $i < $iterating_length ; $i++) : ?>
-          <li class="main-menu__widget-list-item">
-            <a href="<?php the_permalink($terms[$i]->term_id); ?>" class="main-menu__widget-list-link">
-              <?php echo $terms[$i]->name; ?>
+          if ($generated_show_all_link && $generated_show_all_label): ?>
+            <a class="main-menu__widget-link" href="<?php echo $generated_show_all_link; ?>">
+              <?php echo $generated_show_all_label; ?>
             </a>
-          </li>
-        <?php endfor; ?>
-      </ul>
-      <?php
-        if ($generated_show_all_link && $generated_show_all_label): ?>
-          <a class="main-menu__widget-link" href="<?php echo $generated_show_all_link; ?>">
-            <?php echo $generated_show_all_label; ?>
-          </a>
-      <?php endif; ?>
+        <?php endif; ?>
+
     </div>
   <?php
   }
