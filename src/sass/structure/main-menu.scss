@@ -48,11 +48,44 @@
             visibility: visible;
             transition: all 0.3s ease;
             max-height: 9999px;
+            padding-top: 0.6rem;
+
+            .main-menu__widget {
+              height: 5.2rem;
+              transition: all 0.3s ease;
+              transition-delay: 0.1s;
+
+              &-name {
+                margin-top: 2.2rem;
+              }
+
+            }
           }
         }
       }
     }
+  }
 
+  &__widget {
+    padding: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 0;
 
+    &-name {
+      text-transform: uppercase;
+      font-family: Poppins, sans-serif;
+      font-size: 1.6rem;
+      font-style: normal;
+      font-weight: 900;
+      line-height: normal;
+
+      background: linear-gradient(90deg, variables.$pink1 0%, variables.$purple1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      margin-top: 0;
+      transition: all 0.5s ease;
+    }
   }
 }
