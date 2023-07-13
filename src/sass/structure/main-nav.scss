@@ -16,6 +16,8 @@
   }
 
   &.active {
+    max-height: 100vh;
+    overflow-y: auto;
     border-radius: 0px 0px 1rem 1rem;
     background: variables.$whiteAlpha3;
     backdrop-filter: blur(25px);

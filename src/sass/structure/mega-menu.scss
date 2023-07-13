@@ -4,11 +4,15 @@
   transition: all 0.3s ease;
   max-height: 0;
 
-  &__column {
-    &-narrow {}
+  &--type-1 {
+    .mega-menu__column {
+      &-narrow {
+        &:nth-child(1) {}
+      }
 
-    &-wide {
-      display: none;
+      &-wide {
+        display: none;
+      }
     }
   }
 }
